@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { createMovement } from "../../../actions/";
+import { createMovement } from "../actions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
