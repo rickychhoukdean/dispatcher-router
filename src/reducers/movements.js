@@ -1,7 +1,10 @@
 const movements = (state = [], action) => {
   switch (action.type) {
-    case "ADD_MOVEMENTS":
-      return { ...state, schedule: action.payload };
+    case "CREATE_MOVEMENT":
+      let newMovement = [...state];
+      newMovement.push(action.payload);
+      return [...newMovement];
+    
     default:
       return state;
   }
