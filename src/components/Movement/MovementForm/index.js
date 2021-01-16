@@ -16,7 +16,6 @@ const ConnectedMovementForm = ({ createMovement }) => {
   const [description, setDescription] = useState("");
 
   function submitForm() {
-    console.log("hi");
     const payload = { start, end, description };
     createMovement(payload);
   }
