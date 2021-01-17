@@ -13,6 +13,7 @@ function ConnectedMovementList({ movements }) {
     return (
       <MovementListItem
         key={idx}
+        id={idx}
         start={movement.start}
         end={movement.end}
         description={movement.description}

@@ -1,12 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { baseGenerateDriverRoute } from "../helpers";
-
-function generateRoute(movements) {
-  let test = baseGenerateDriverRoute(movements);
-  console.log(test);
-}
-
 const mapStateToProps = (state) => {
   return {
     movements: state.movements,
@@ -14,8 +7,6 @@ const mapStateToProps = (state) => {
 };
 
 function ConnectedMapView({ movements }) {
-  console.log(movements);
-
   let ref = useRef();
 
   const getPixelRatio = (context) => {
@@ -57,14 +48,6 @@ function ConnectedMapView({ movements }) {
 
   return (
     <>
-      <button
-        onClick={() => {
-          generateRoute(movements);
-        }}
-      >
-        GeneratePath
-      </button>
-
       <canvas className="map" ref={ref} />
     </>
   );
