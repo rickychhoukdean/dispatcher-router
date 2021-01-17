@@ -12,3 +12,8 @@ export const editMovement = (movement) => ({
   type: "EDIT_MOVEMENT",
   payload: movement,
 });
+
+export const createRoute = (driverRoute) => ({
+  type: "CREATE_ROUTE",
+  payload: driverRoute,
+});
