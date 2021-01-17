@@ -8,9 +8,9 @@ export const deleteMovement = (id) => ({
   payload: id,
 });
 
-export const editMovement = (movement) => ({
+export const editMovement = (id, movement) => ({
   type: "EDIT_MOVEMENT",
-  payload: movement,
+  payload: { id, movement },
 });
 
 export const createRoute = (driverRoute) => ({
