@@ -1,5 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
+import { baseGenerateDriverRoute } from "../helpers";
+
+function generateRoute(movements) {
+  let test = baseGenerateDriverRoute(movements);
+  console.log(test);
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -39,10 +45,8 @@ function ConnectedMapView({ movements }) {
     canvas.height = height * ratio;
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
- 
 
     movements.forEach((movement) => {
-      console.log(movement);
       context.beginPath();
       context.moveTo(movement.start[0], movement.start[1]);
       context.lineTo(movement.end[0], movement.end[1]);
@@ -51,7 +55,19 @@ function ConnectedMapView({ movements }) {
     });
   }, [movements]);
 
-  return <canvas className="map" ref={ref} />;
+  return (
+    <>
+      <button
+        onClick={() => {
+          generateRoute(movements);
+        }}
+      >
+        GeneratePath
+      </button>
+
+      <canvas className="map" ref={ref} />
+    </>
+  );
 }
 
 const MapView = connect(mapStateToProps)(ConnectedMapView);
