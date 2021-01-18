@@ -1,9 +1,50 @@
-import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import App from "./App";
+import { baseGenerateDriverRoute, checkValidMovement } from "./helpers";
 
-test("renders learn react link", () => {
+// TODO: Add tests for checkValidMovement
 
-  const linkElement = "a";
-  expect(linkElement).toBe("a");
+test("Test on bigger function", () => {
+  let movements = [
+    { start: [3, 4], end: [5, 5], description: "a" },
+    { start: [1, 1], end: [3, 3], description: "a" },
+    { start: [0, 0], end: [5, 5], description: "a" },
+    { start: [2, 1], end: [3, 3], description: "a" },
+  ];
+
+  let result = baseGenerateDriverRoute(movements);
+  let wantedResult = [
+    [3, 4],
+    [5, 5],
+    [1, 1],
+    [3, 3],
+    [0, 0],
+    [5, 5],
+    [2, 1],
+    [3, 3],
+  ];
+  expect(result).toStrictEqual(wantedResult);
+});
+
+test("Remove start and end if they are the same", () => {
+  const movements = [
+    { start: [0, 0], end: [1, 1], description: "a" },
+    { start: [1, 1], end: [2, 2], description: "a" },
+  ];
+
+  let result = baseGenerateDriverRoute(movements);
+  let wantedResult = [
+    [0, 0],
+    [1, 1],
+    [2, 2],
+  ];
+  expect(result).toStrictEqual(wantedResult);
+});
+
+test("Single item", () => {
+  let movements = [{ start: [3, 4], end: [5, 5], description: "a" }];
+  let result = baseGenerateDriverRoute(movements);
+  let wantedResult = [
+    [3, 4],
+    [5, 5],
+  ];
+  expect(result).toStrictEqual(wantedResult);
 });

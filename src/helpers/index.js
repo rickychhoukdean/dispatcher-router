@@ -23,14 +23,6 @@
 //   return res;
 // }
 
-let movements = [
-  { start: [3, 4], end: [5, 5], description: "a" },
-  { start: [1, 1], end: [3, 3], description: "a" },
-  { start: [0, 0], end: [5, 5], description: "a" },
-  { start: [2, 1], end: [3, 3], description: "a" },
-  { start: [10, 40], end: [5, 5], description: "a" },
-  { start: [2, 8], end: [3, 3], description: "a" },
-];
 
 // generateDriverRoute(movements);
 
@@ -60,7 +52,6 @@ function baseGenerateDriverRoute(movements) {
   return res;
 }
 
-
 function compareArray(a, b) {
   return a.length === b.length && a.every((v, i) => v === b[i]);
 }
@@ -78,4 +69,23 @@ function duplicateObjectInArray(array, obj) {
   return false;
 }
 
-export { baseGenerateDriverRoute, duplicateObjectInArray };
+function inRangeCoordinates(min, max, coordinates) {
+  // TODO: Add better coordinate validation
+  return (
+    min <= coordinates[0] &&
+    max >= coordinates[0] &&
+    min <= coordinates[1] &&
+    max >= coordinates[1]
+  );
+}
+
+function checkValidMovement(movements, newMovement) {
+  return (
+    !duplicateObjectInArray(movements, newMovement) &&
+    !compareArray(newMovement["start"], newMovement["end"])
+    //  &&
+    // inRangeCoordinates(newMovement)
+  );
+}
+
+export { baseGenerateDriverRoute, checkValidMovement };
