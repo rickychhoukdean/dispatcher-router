@@ -21,7 +21,7 @@ function ConnectedMovementList({ movements }) {
     );
   });
 
-  return <>{movementList}</>;
+  return <div className="movement__list">{movementList}</div>;
 }
 
 const MovementList = connect(mapStateToProps)(ConnectedMovementList);

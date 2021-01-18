@@ -1,10 +1,51 @@
 .map {
   width: 70vw;
   height: 100vh;
-  background-color: grey;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: #f1f3f4;
+  display: inline-block;
 }
 
-.siderbar {
+.sidebar {
   width: 30vw;
-  height: 100vh;
+  height: 80vh;
+  display: inline-block;
+}
+
+
+.movement {
+
+  &__list {
+    overflow-y: scroll;
+    height: 80vh;
+  }
+
+
+  &__list-item {
+
+    border-bottom: 5px solid red;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+    &--description {
+      font-size: 1.5rem;
+      word-wrap: break-word;
+    }
+
+    &--coordinate {
+      font-size: 1rem;
+      color: gray
+    }
+
+    &--button-holder {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+
 }

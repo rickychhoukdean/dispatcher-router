@@ -1,23 +1,44 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { createMovement } from "../actions";
+import { createMovement, createRoute } from "../actions";
+import { checkValidMovement, baseGenerateDriverRoute } from "../helpers";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const mapDispatchToProps = (dispatch) => {
   return {
     createMovement: (movement) => dispatch(createMovement(movement)),
+    createRoute: (driverRoute) => dispatch(createRoute(driverRoute)),
   };
 };
 
-const ConnectedMovementForm = ({ createMovement }) => {
-  const [start, setStart] = useState([0, 0]);
-  const [end, setEnd] = useState([0, 0]);
+const mapStateToProps = (state) => {
+  return {
+    movements: state.movements,
+  };
+};
+
+const ConnectedMovementForm = ({ createRoute, createMovement, movements }) => {
+  const [start, setStart] = useState([null, null]);
+  const [end, setEnd] = useState([null, null]);
   const [description, setDescription] = useState("");
 
   function submitForm() {
     const payload = { start, end, description };
-    createMovement(payload);
+
+    if (checkValidMovement(movements, payload)) {
+      // TODO: Better alert
+      createMovement(payload);
+    } else {
+      alert("no");
+    }
+    createRouter();
+  }
+  // TODO: Move create route somewher else
+  function createRouter() {
+    if (movements.length !== 0) {
+      createRoute(baseGenerateDriverRoute(movements));
+    }
   }
 
   return (
@@ -27,6 +48,7 @@ const ConnectedMovementForm = ({ createMovement }) => {
         <Form.Group controlId="formStartLat">
           <Form.Label>Lat</Form.Label>
           <Form.Control
+            required
             placeholder="Latitude"
             onChange={(e) => {
               setStart([e.target.value, start[1]]);
@@ -37,6 +59,7 @@ const ConnectedMovementForm = ({ createMovement }) => {
         <Form.Group controlId="formStartLon">
           <Form.Label>Lon</Form.Label>
           <Form.Control
+            required
             placeholder="Longitude"
             onChange={(e) => {
               setStart([start[0], e.target.value]);
@@ -50,9 +73,10 @@ const ConnectedMovementForm = ({ createMovement }) => {
         <Form.Group controlId="formEndLat">
           <Form.Label>Lat</Form.Label>
           <Form.Control
+            required
             placeholder="Latitude"
             onChange={(e) => {
-              setEnd([e.target.value, start[1]]);
+              setEnd([e.target.value, end[1]]);
             }}
           />
         </Form.Group>
@@ -60,9 +84,10 @@ const ConnectedMovementForm = ({ createMovement }) => {
         <Form.Group controlId="formEndLon">
           <Form.Label>Lon </Form.Label>
           <Form.Control
+            required
             placeholder="Longitude"
             onChange={(e) => {
-              setEnd([start[0], e.target.value]);
+              setEnd([end[0], e.target.value]);
             }}
           />
         </Form.Group>
@@ -71,6 +96,7 @@ const ConnectedMovementForm = ({ createMovement }) => {
       <Form.Group controlId="formMovementDescription">
         <Form.Label>Description</Form.Label>
         <Form.Control
+          required
           placeholder="Enter Description"
           onChange={(e) => {
             setDescription(e.target.value);
@@ -90,6 +116,9 @@ const ConnectedMovementForm = ({ createMovement }) => {
   );
 };
 
-const MovementForm = connect(null, mapDispatchToProps)(ConnectedMovementForm);
+const MovementForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedMovementForm);
 
 export default MovementForm;

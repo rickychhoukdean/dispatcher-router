@@ -1,11 +1,11 @@
 import React from "react";
-import MovementForm from "./MovementForm";
 import MovementList from "./MovementList";
+import FormModal from "./FormModal";
 
 function SideBar() {
   return (
     <div className="sidebar">
-      <MovementForm />
+      <FormModal />
       <MovementList />
     </div>
   );

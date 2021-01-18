@@ -8,40 +8,28 @@ const mapStateToProps = (state) => {
 
 function ConnectedMapView({ movements }) {
   let ref = useRef();
-
-  const getPixelRatio = (context) => {
-    var backingStore =
-      context.backingStorePixelRatio ||
-      context.webkitBackingStorePixelRatio ||
-      context.mozBackingStorePixelRatio ||
-      context.msBackingStorePixelRatio ||
-      context.oBackingStorePixelRatio ||
-      context.backingStorePixelRatio ||
-      1;
-
-    return (window.devicePixelRatio || 1) / backingStore;
-  };
-
+  // TODO: Make lines look good.
   useEffect(() => {
     let canvas = ref.current;
+    canvas.width = 1000;
+    canvas.height = 750;
+    // canvas.style.width = "500px";
+    // canvas.style.height = "375px";
     let context = canvas.getContext("2d");
-
-    let ratio = getPixelRatio(context);
-    let width = getComputedStyle(canvas).getPropertyValue("width").slice(0, -2);
-    let height = getComputedStyle(canvas)
-      .getPropertyValue("height")
-      .slice(0, -2);
-
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
 
     movements.forEach((movement) => {
       context.beginPath();
+
+      context.font = "30px Arial";
+      context.fillText(
+        movement.description,
+        movement.start[0],
+        movement.start[1]
+      );
+
       context.moveTo(movement.start[0], movement.start[1]);
       context.lineTo(movement.end[0], movement.end[1]);
-      context.lineWidth = 10;
+      context.lineWidth = 1;
       context.stroke();
     });
   }, [movements]);
