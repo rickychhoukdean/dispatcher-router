@@ -1,23 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteMovement } from "../actions";
+import { deleteMovement, openEditForm } from "../actions";
 
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteMovement: (movement) => dispatch(deleteMovement(movement)),
+    openEditForm: (uiState) => dispatch(openEditForm(uiState)),
   };
 };
 
 function ConnectedMovementListItem({
+  openEditForm,
   deleteMovement,
   start,
   end,
   description,
   id,
 }) {
-  function handleDelete() {
-    deleteMovement(id);
-  }
+  const openForm = () => {
+    let payload = { start, end, description };
+
+    openEditForm(payload);
+  };
 
   return (
     <div className="movement__list-item">
@@ -36,12 +40,17 @@ function ConnectedMovementListItem({
         <button
           className="movement__list-item--delete"
           onClick={() => {
-            handleDelete(id);
+            deleteMovement(id);
           }}
         >
           Delete
         </button>
-        <button className="movement__list-item--modify" onClick={() => {}}>
+        <button
+          className="movement__list-item--modify"
+          onClick={() => {
+            openForm(id);
+          }}
+        >
           Modify
         </button>
       </div>

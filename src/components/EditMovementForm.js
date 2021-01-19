@@ -1,22 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-import { editMovement, createRoute } from "../actions";
+import { createMovement, createRoute, closeEditForm } from "../actions";
 import { checkValidMovement, baseGenerateDriverRoute } from "../helpers";
+import Modal from "react-bootstrap/Modal";
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    editMovement: (movement) => dispatch(editMovement(movement)),
+    createMovement: (movement) => dispatch(createMovement(movement)),
     createRoute: (driverRoute) => dispatch(createRoute(driverRoute)),
+    closeEditForm: (uiState) => dispatch(closeEditForm(uiState)),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     movements: state.movements,
+    uiState: state.uiState,
   };
 };
 
 const ConnectedEditMovementForm = ({
+  closeEditForm,
+  uiState,
   createRoute,
   createMovement,
   movements,
@@ -50,39 +55,56 @@ const ConnectedEditMovementForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        required
-        name="description"
-        type="text"
-        placeholder="Description"
-      />
+    <Modal show={uiState.openEditDialog} onHide={closeEditForm}>
+      <Modal.Header closeButton>
+        <Modal.Title>Edit Movement Form</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <form onSubmit={handleSubmit}>
+          <input
+            required
+            name="description"
+            type="text"
+            placeholder="Description"
+            defaultValue={uiState.movementToEdit.description}
+          />
 
-      <input
-        required
-        name="start-lat"
-        type="Number"
-        placeholder="Start latitude"
-      />
+          <input
+            required
+            name="start-lat"
+            type="Number"
+            placeholder="Start latitude"
+            defaultValue={uiState.movementToEdit.start[0]}
+          />
 
-      <input
-        required
-        name="start-lon"
-        type="Number"
-        placeholder="Start longitude"
-      />
+          <input
+            required
+            name="start-lon"
+            type="Number"
+            placeholder="Start longitude"
+            defaultValue={uiState.movementToEdit.start[1]}
+          />
 
-      <input required name="end-lat" type="Number" placeholder="End latitude" />
+          <input
+            required
+            name="end-lat"
+            type="Number"
+            placeholder="End latitude"
+            defaultValue={uiState.movementToEdit.end[0]}
+          />
 
-      <input
-        required
-        name="end-lon"
-        type="Number"
-        placeholder="End longitude"
-      />
+          <input
+            required
+            name="end-lon"
+            type="Number"
+            placeholder="End longitude"
+            defaultValue={uiState.movementToEdit.end[1]}
+          />
 
-      <button>Post</button>
-    </form>
+          <button>Post</button>
+        </form>
+      </Modal.Body>
+    </Modal>
   );
 };
 

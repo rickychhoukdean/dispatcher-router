@@ -25,3 +25,12 @@ export const openForm = () => ({
 export const closeForm = () => ({
   type: "CLOSE_FORM",
 });
+
+export const openEditForm = (id) => ({
+  type: "OPEN_EDIT_FORM",
+  payload: id,
+});
+
+export const closeEditForm = () => ({
+  type: "CLOSE_EDIT_FORM",
+});

@@ -18,12 +18,8 @@ export const initialState = {
   ],
   driverRoute: [],
   uiState: {
-    //Create
     openFormDialog: false,
-    //Update
     openEditDialog: false,
-    articleToEdit: {},
-    //Delete
-    checked: [],
+    movementToEdit: { start: [0, 0], end: [0, 0], description: "" },
   },
 };

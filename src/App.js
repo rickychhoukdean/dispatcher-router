@@ -10,7 +10,7 @@ function App() {
     <>
       <Navbar />
       <MovementList />
-      {/* <EditMovementForm /> */}
+      <EditMovementForm />
       <MovementForm /> 
       <MapView />
     </>

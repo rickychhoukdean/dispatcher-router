@@ -32,12 +32,7 @@ function ConnectedMovementList({ movements, openForm }) {
   return (
     <div className="sidebar">
       <div className="movement__list">
-        <Button
-          variant="primary"
-          onClick={() => {
-            openForm(true);
-          }}
-        >
+        <Button variant="primary" onClick={openForm}>
           Add new Movement
         </Button>
         {movementList}
