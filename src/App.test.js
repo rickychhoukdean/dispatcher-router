@@ -48,3 +48,10 @@ test("Single item", () => {
   ];
   expect(result).toStrictEqual(wantedResult);
 });
+
+test("No item", () => {
+  let movements = [];
+  let result = baseGenerateDriverRoute(movements);
+  let wantedResult = [];
+  expect(result).toStrictEqual(wantedResult);
+});

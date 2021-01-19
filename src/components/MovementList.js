@@ -17,18 +17,23 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 function ConnectedMovementList({ movements, openForm }) {
-  const movementList = movements.map((movement, idx) => {
-    return (
-      <MovementListItem
-        key={idx}
-        id={idx}
-        start={movement.start}
-        end={movement.end}
-        description={movement.description}
-      />
-    );
-  });
+  let movementList;
 
+  if (movements.length > 0) {
+    movementList = movements.map((movement, idx) => {
+      return (
+        <MovementListItem
+          key={idx}
+          id={idx}
+          start={movement.start}
+          end={movement.end}
+          description={movement.description}
+        />
+      );
+    });
+  } else {
+    movementList = <div>Please add a movement for the driver!</div>;
+  }
   return (
     <div className="sidebar">
       <div className="movement__list">

@@ -23,7 +23,6 @@
 //   return res;
 // }
 
-
 // generateDriverRoute(movements);
 
 // function euclidianDistance(start, end) {
@@ -33,6 +32,9 @@
 // }
 
 function baseGenerateDriverRoute(movements) {
+  if (movements.length === 0) {
+    return [];
+  }
   let convertedArray = [];
 
   movements.forEach((movement) => {

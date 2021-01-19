@@ -18,13 +18,9 @@ const mapDispatchToProps = (dispatch) => {
 
 function ConnectedRouteDisplay({ driverRoute, movements, createRoute }) {
   useEffect(() => {
-    if (movements.length > 0) {
-      createRoute(baseGenerateDriverRoute(movements));
-    } else {
-      createRoute([]);
-    }
+    createRoute(baseGenerateDriverRoute(movements));
   }, [movements, createRoute]);
-// TODO: Show driver route nicely.
+  // TODO: Show driver route nicely.
 
   return <>{driverRoute}</>;
 }
