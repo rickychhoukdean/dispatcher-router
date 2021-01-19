@@ -1,15 +1,9 @@
-import { act } from "react-dom/test-utils";
-
 const movements = (state = [], action) => {
   switch (action.type) {
     case "CREATE_MOVEMENT":
-      let newMovement = [...state];
-      newMovement.push(action.payload);
-      return [...newMovement];
+      return state.concat([action.payload]);
     case "DELETE_MOVEMENT":
-      let deletedMovement = [...state];
-      deletedMovement.splice(action.payload, 1);
-      return [...deletedMovement];
+      return state.filter((movement) => movement.id !== action.payload);
     case "EDIT_MOVEMENT":
       let editMovement = [...state];
       editMovement[action.payload.id] = action.payload.movement;

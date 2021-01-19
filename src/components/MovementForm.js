@@ -1,31 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { createMovement, createRoute } from "../actions";
+import { createMovement, createRoute, closeForm } from "../actions";
 import { checkValidMovement, baseGenerateDriverRoute } from "../helpers";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const mapDispatchToProps = (dispatch) => {
   return {
     createMovement: (movement) => dispatch(createMovement(movement)),
     createRoute: (driverRoute) => dispatch(createRoute(driverRoute)),
+    closeForm: (uiState) => dispatch(closeForm(uiState)),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     movements: state.movements,
+    uiState: state.uiState,
   };
 };
 
-const ConnectedMovementForm = ({ createRoute, createMovement, movements }) => {
-  const [start, setStart] = useState([null, null]);
-  const [end, setEnd] = useState([null, null]);
-  const [description, setDescription] = useState("");
+const ConnectedMovementForm = ({
+  closeForm,
+  uiState,
+  createRoute,
+  createMovement,
+  movements,
+}) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const description = e.target["description"].value;
+    const startLat = e.target["start-lat"].value;
+    const startLon = e.target["start-lon"].value;
+    const endLat = e.target["end-lat"].value;
+    const endLon = e.target["end-lon"].value;
 
-  function submitForm() {
-    const payload = { start, end, description };
-
+    const payload = {
+      start: [startLat, startLon],
+      end: [endLat, endLon],
+      description,
+    };
     if (checkValidMovement(movements, payload)) {
       // TODO: Better alert
       createMovement(payload);
@@ -33,8 +46,8 @@ const ConnectedMovementForm = ({ createRoute, createMovement, movements }) => {
       alert("no");
     }
     createRouter();
-  }
-  // TODO: Move create route somewher else
+  };
+
   function createRouter() {
     if (movements.length !== 0) {
       createRoute(baseGenerateDriverRoute(movements));
@@ -42,77 +55,51 @@ const ConnectedMovementForm = ({ createRoute, createMovement, movements }) => {
   }
 
   return (
-    <Form>
-      <Form.Label>Start</Form.Label>
-      <Form.Row>
-        <Form.Group controlId="formStartLat">
-          <Form.Label>Lat</Form.Label>
-          <Form.Control
+    <Modal show={uiState.openFormDialog} onHide={closeForm}>
+      <Modal.Header closeButton>
+        <Modal.Title>New Movement Form</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <form onSubmit={handleSubmit}>
+          <input
             required
-            placeholder="Latitude"
-            onChange={(e) => {
-              setStart([e.target.value, start[1]]);
-            }}
+            name="description"
+            type="text"
+            placeholder="Description"
           />
-        </Form.Group>
 
-        <Form.Group controlId="formStartLon">
-          <Form.Label>Lon</Form.Label>
-          <Form.Control
+          <input
             required
-            placeholder="Longitude"
-            onChange={(e) => {
-              setStart([start[0], e.target.value]);
-            }}
+            name="start-lat"
+            type="Number"
+            placeholder="Start latitude"
           />
-        </Form.Group>
-      </Form.Row>
 
-      <Form.Label>End</Form.Label>
-      <Form.Row>
-        <Form.Group controlId="formEndLat">
-          <Form.Label>Lat</Form.Label>
-          <Form.Control
+          <input
             required
-            placeholder="Latitude"
-            onChange={(e) => {
-              setEnd([e.target.value, end[1]]);
-            }}
+            name="start-lon"
+            type="Number"
+            placeholder="Start longitude"
           />
-        </Form.Group>
 
-        <Form.Group controlId="formEndLon">
-          <Form.Label>Lon </Form.Label>
-          <Form.Control
+          <input
             required
-            placeholder="Longitude"
-            onChange={(e) => {
-              setEnd([end[0], e.target.value]);
-            }}
+            name="end-lat"
+            type="Number"
+            placeholder="End latitude"
           />
-        </Form.Group>
-      </Form.Row>
 
-      <Form.Group controlId="formMovementDescription">
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          required
-          placeholder="Enter Description"
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-        />
-      </Form.Group>
+          <input
+            required
+            name="end-lon"
+            type="Number"
+            placeholder="End longitude"
+          />
 
-      <Button
-        variant="primary"
-        onClick={() => {
-          submitForm();
-        }}
-      >
-        Submit
-      </Button>
-    </Form>
+          <button>Post</button>
+        </form>
+      </Modal.Body>
+    </Modal>
   );
 };
 

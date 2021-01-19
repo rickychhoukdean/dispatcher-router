@@ -17,3 +17,11 @@ export const createRoute = (driverRoute) => ({
   type: "CREATE_ROUTE",
   payload: driverRoute,
 });
+
+export const openForm = () => ({
+  type: "OPEN_FORM",
+});
+
+export const closeForm = () => ({
+  type: "CLOSE_FORM",
+});

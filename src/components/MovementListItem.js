@@ -21,7 +21,7 @@ function ConnectedMovementListItem({
 
   return (
     <div className="movement__list-item">
-      <div movement__list-item--description-holder>
+      <div className="movement__list-item--description-holder">
         <h3 className="movement__list-item--description">
           Description:{description}
         </h3>
@@ -41,7 +41,9 @@ function ConnectedMovementListItem({
         >
           Delete
         </button>
-        <button className="movement__list-item--modify">Modify</button>
+        <button className="movement__list-item--modify" onClick={() => {}}>
+          Modify
+        </button>
       </div>
     </div>
   );
