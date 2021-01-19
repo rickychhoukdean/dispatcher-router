@@ -4,14 +4,16 @@ import Navbar from "./components/NavBar";
 import MovementList from "./components/MovementList";
 import EditMovementForm from "./components/EditMovementForm";
 import MovementForm from "./components/MovementForm";
+import RouteDisplay from "./components/RouteDisplay";
 
 function App() {
   return (
     <>
+      <RouteDisplay />
       <Navbar />
       <MovementList />
       <EditMovementForm />
-      <MovementForm /> 
+      <MovementForm />
       <MapView />
     </>
   );

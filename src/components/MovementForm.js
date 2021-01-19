@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createMovement, createRoute, closeForm } from "../actions";
-import { checkValidMovement, baseGenerateDriverRoute } from "../helpers";
+import { createMovement, closeForm } from "../actions";
+import { checkValidMovement } from "../helpers";
 import Modal from "react-bootstrap/Modal";
 
 const mapDispatchToProps = (dispatch) => {
   return {
     createMovement: (movement) => dispatch(createMovement(movement)),
-    createRoute: (driverRoute) => dispatch(createRoute(driverRoute)),
     closeForm: (uiState) => dispatch(closeForm(uiState)),
   };
 };
@@ -22,7 +21,6 @@ const mapStateToProps = (state) => {
 const ConnectedMovementForm = ({
   closeForm,
   uiState,
-  createRoute,
   createMovement,
   movements,
 }) => {
@@ -45,14 +43,7 @@ const ConnectedMovementForm = ({
     } else {
       alert("no");
     }
-    createRouter();
   };
-
-  function createRouter() {
-    if (movements.length !== 0) {
-      createRoute(baseGenerateDriverRoute(movements));
-    }
-  }
 
   return (
     <Modal show={uiState.openFormDialog} onHide={closeForm}>

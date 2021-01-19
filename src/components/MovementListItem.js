@@ -18,7 +18,7 @@ function ConnectedMovementListItem({
   id,
 }) {
   const openForm = () => {
-    let payload = { start, end, description };
+    let payload = { id, start, end, description };
 
     openEditForm(payload);
   };

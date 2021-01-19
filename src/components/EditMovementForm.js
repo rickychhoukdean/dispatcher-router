@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createMovement, createRoute, closeEditForm } from "../actions";
-import { checkValidMovement, baseGenerateDriverRoute } from "../helpers";
+import { editMovement, closeEditForm } from "../actions";
+import { checkValidMovement } from "../helpers";
 import Modal from "react-bootstrap/Modal";
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createMovement: (movement) => dispatch(createMovement(movement)),
-    createRoute: (driverRoute) => dispatch(createRoute(driverRoute)),
+    editMovement: (movement) => dispatch(editMovement(movement)),
     closeEditForm: (uiState) => dispatch(closeEditForm(uiState)),
   };
 };
@@ -22,8 +21,7 @@ const mapStateToProps = (state) => {
 const ConnectedEditMovementForm = ({
   closeEditForm,
   uiState,
-  createRoute,
-  createMovement,
+  editMovement,
   movements,
 }) => {
   const handleSubmit = (e) => {
@@ -34,25 +32,19 @@ const ConnectedEditMovementForm = ({
     const endLat = e.target["end-lat"].value;
     const endLon = e.target["end-lon"].value;
 
-    const payload = {
+    const movement = {
       start: [startLat, startLon],
       end: [endLat, endLon],
       description,
     };
-    if (checkValidMovement(movements, payload)) {
+    if (checkValidMovement(movements, movement)) {
       // TODO: Better alert
-      createMovement(payload);
+      console.log(movement);
+      editMovement(uiState.movementToEdit.id, movement);
     } else {
       alert("no");
     }
-    createRouter();
   };
-
-  function createRouter() {
-    if (movements.length !== 0) {
-      createRoute(baseGenerateDriverRoute(movements));
-    }
-  }
 
   return (
     <Modal show={uiState.openEditDialog} onHide={closeEditForm}>
