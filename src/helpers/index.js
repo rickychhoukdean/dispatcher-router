@@ -31,6 +31,13 @@
 //   );
 // }
 
+import {
+  MAX_LATITUDE,
+  MAX_LONGITUDE,
+  MIN_LATITUDE,
+  MIN_LONGITUDE,
+} from "../constants/coordinates";
+
 function baseGenerateDriverRoute(movements) {
   if (movements.length === 0) {
     return [];
@@ -71,7 +78,11 @@ function duplicateObjectInArray(array, obj) {
   return false;
 }
 
-function inRangeCoordinates(min, max, coordinates) {
+function inRangeCoordinates(
+  min = [MIN_LONGITUDE, MIN_LATITUDE],
+  max = [MAX_LONGITUDE, MAX_LATITUDE],
+  coordinates
+) {
   // TODO: Add better coordinate validation
   return (
     min <= coordinates[0] &&

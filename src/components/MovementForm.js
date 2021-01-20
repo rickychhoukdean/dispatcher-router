@@ -3,6 +3,12 @@ import { connect } from "react-redux";
 import { createMovement, closeForm } from "../actions";
 import { checkValidMovement } from "../helpers";
 import Modal from "react-bootstrap/Modal";
+import {
+  MAX_LATITUDE,
+  MAX_LONGITUDE,
+  MIN_LATITUDE,
+  MIN_LONGITUDE,
+} from "../constants/coordinates";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -65,6 +71,8 @@ const ConnectedMovementForm = ({
             name="start-lat"
             type="Number"
             placeholder="Start latitude"
+            min={MIN_LATITUDE}
+            max={MAX_LATITUDE}
           />
 
           <input
@@ -72,6 +80,8 @@ const ConnectedMovementForm = ({
             name="start-lon"
             type="Number"
             placeholder="Start longitude"
+            min={MIN_LONGITUDE}
+            max={MAX_LONGITUDE}
           />
 
           <input
@@ -79,6 +89,8 @@ const ConnectedMovementForm = ({
             name="end-lat"
             type="Number"
             placeholder="End latitude"
+            min={MIN_LATITUDE}
+            max={MAX_LATITUDE}
           />
 
           <input
@@ -86,6 +98,8 @@ const ConnectedMovementForm = ({
             name="end-lon"
             type="Number"
             placeholder="End longitude"
+            min={MIN_LONGITUDE}
+            max={MAX_LONGITUDE}
           />
 
           <button>Post</button>

@@ -3,6 +3,12 @@ import { connect } from "react-redux";
 import { editMovement, closeEditForm } from "../actions";
 import { checkValidMovement } from "../helpers";
 import Modal from "react-bootstrap/Modal";
+import {
+  MAX_LATITUDE,
+  MAX_LONGITUDE,
+  MIN_LATITUDE,
+  MIN_LONGITUDE,
+} from "../constants/coordinates";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -67,6 +73,8 @@ const ConnectedEditMovementForm = ({
             type="Number"
             placeholder="Start latitude"
             defaultValue={uiState.movementToEdit.start[0]}
+            min={MIN_LATITUDE}
+            max={MAX_LATITUDE}
           />
 
           <input
@@ -75,6 +83,8 @@ const ConnectedEditMovementForm = ({
             type="Number"
             placeholder="Start longitude"
             defaultValue={uiState.movementToEdit.start[1]}
+            min={MIN_LONGITUDE}
+            max={MAX_LONGITUDE}
           />
 
           <input
@@ -83,6 +93,8 @@ const ConnectedEditMovementForm = ({
             type="Number"
             placeholder="End latitude"
             defaultValue={uiState.movementToEdit.end[0]}
+            min={MIN_LATITUDE}
+            max={MAX_LATITUDE}
           />
 
           <input
@@ -91,6 +103,8 @@ const ConnectedEditMovementForm = ({
             type="Number"
             placeholder="End longitude"
             defaultValue={uiState.movementToEdit.end[1]}
+            min={MIN_LONGITUDE}
+            max={MAX_LONGITUDE}
           />
 
           <button>Post</button>
