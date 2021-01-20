@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    editMovement: (movement) => dispatch(editMovement(movement)),
+    editMovement: (id, movement) => dispatch(editMovement(id, movement)),
     closeEditForm: (uiState) => dispatch(closeEditForm(uiState)),
   };
 };
@@ -39,8 +39,8 @@ const ConnectedEditMovementForm = ({
     };
     if (checkValidMovement(movements, movement)) {
       // TODO: Better alert
-      console.log(movement);
       editMovement(uiState.movementToEdit.id, movement);
+      closeEditForm();
     } else {
       alert("no");
     }

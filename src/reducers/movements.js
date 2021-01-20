@@ -7,11 +7,9 @@ const movements = (state = [], action) => {
       deletedMovement.splice(action.payload, 1);
       return [...deletedMovement];
     case "EDIT_MOVEMENT":
-      // TODO: Fix editmovement and delete movement with id's
-      console.log(action.payload);
-      // let editMovement = [...state];
-      // editMovement[action.payload.id] = action.payload.movement;
-      return state;
+      let editMovement = [...state];
+      editMovement[action.payload.id] = action.payload.movement;
+      return [...editMovement];
     default:
       return state;
   }

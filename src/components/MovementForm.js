@@ -40,6 +40,7 @@ const ConnectedMovementForm = ({
     if (checkValidMovement(movements, payload)) {
       // TODO: Better alert
       createMovement(payload);
+      closeForm();
     } else {
       alert("no");
     }

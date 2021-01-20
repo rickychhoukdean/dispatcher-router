@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 const mapStateToProps = (state) => {
   return {
     movements: state.movements,
+    driverRoute: state.driverRoute,
   };
 };
 
-function ConnectedMapView({ movements }) {
+function ConnectedMapView({ movements, driverRoute }) {
   let ref = useRef();
   // TODO: Make lines look good.
   useEffect(() => {
@@ -33,6 +34,12 @@ function ConnectedMapView({ movements }) {
       context.stroke();
     });
   }, [movements]);
+
+  useEffect(() => {
+    driverRoute.forEach((route) => {
+      // TODO: Add visual driver route here
+    });
+  }, [driverRoute]);
 
   return (
     <>
