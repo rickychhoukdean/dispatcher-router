@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { createRoute } from "../actions";
-import { baseGenerateDriverRoute } from "../helpers";
+import {
+  baseGenerateDriverRoute,
+  generateDriverRoute,
+  generateBestRoute,
+} from "../helpers";
 
 const mapStateToProps = (state) => {
   return {
@@ -18,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function ConnectedRouteDisplay({ driverRoute, movements, createRoute }) {
   useEffect(() => {
-    createRoute(baseGenerateDriverRoute(movements));
+    createRoute(generateBestRoute(movements));
   }, [movements, createRoute]);
 
   let router = driverRoute.map((route) => {
