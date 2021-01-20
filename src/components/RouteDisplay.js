@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { createRoute } from "../actions";
-import { baseGenerateDriverRoute } from "../helpers";
+import { baseGenerateDriverRoute, displayRoutes } from "../helpers";
 
 const mapStateToProps = (state) => {
   return {
@@ -20,9 +20,10 @@ function ConnectedRouteDisplay({ driverRoute, movements, createRoute }) {
   useEffect(() => {
     createRoute(baseGenerateDriverRoute(movements));
   }, [movements, createRoute]);
-  // TODO: Show driver route nicely.
 
-  return <>{driverRoute}</>;
+  return (
+    <div className="route">Driver Route: {displayRoutes(driverRoute)}</div>
+  );
 }
 
 const RouteDisplay = connect(
