@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 const mapStateToProps = (state) => {
   return {
@@ -8,41 +8,79 @@ const mapStateToProps = (state) => {
 };
 
 function ConnectedMapView({ movements, driverRoute }) {
+  const [mapType, setMapType] = useState(true);
+
   let ref = useRef();
   // TODO: Make lines look good.
   useEffect(() => {
-    let canvas = ref.current;
-    canvas.width = 1000;
-    canvas.height = 750;
-    // canvas.style.width = "500px";
-    // canvas.style.height = "375px";
-    let context = canvas.getContext("2d");
+    if (mapType) {
+      let canvas = ref.current;
+      canvas.width = 1000;
+      canvas.height = 750;
+      canvas.style.width = "800px";
+      canvas.style.height = "800px";
+      let context = canvas.getContext("2d");
 
-    movements.forEach((movement) => {
-      context.beginPath();
+      movements.forEach((movement) => {
+        context.beginPath();
+        context.font = "30px Arial";
+        context.fillText(
+          movement.description,
+          movement.start[0],
+          movement.start[1]
+        );
+        context.moveTo(movement.start[0], movement.start[1]);
+        context.lineTo(movement.end[0], movement.end[1]);
+        context.lineWidth = 1;
+        context.stroke();
+      });
+    } else {
+      let canvas = ref.current;
+      canvas.width = 1000;
+      canvas.height = 750;
+      canvas.style.width = "800px";
+      canvas.style.height = "800px";
+      let context = canvas.getContext("2d");
 
-      context.font = "30px Arial";
-      context.fillText(
-        movement.description,
-        movement.start[0],
-        movement.start[1]
-      );
+      function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
 
-      context.moveTo(movement.start[0], movement.start[1]);
-      context.lineTo(movement.end[0], movement.end[1]);
-      context.lineWidth = 1;
-      context.stroke();
-    });
-  }, [movements]);
-
-  useEffect(() => {
-    driverRoute.forEach((route) => {
-      // TODO: Add visual driver route here
-    });
-  }, [driverRoute]);
+      for (let i = 0; i < driverRoute.length; i++) {
+        context.font = "30px Arial";
+        if (i === 0) {
+          context.beginPath();
+          context.moveTo(driverRoute[i][0], driverRoute[i][1]);
+          context.lineTo(driverRoute[i + 1][0], driverRoute[i + 1][1]);
+          context.lineWidth = 1;
+          context.stroke();
+          context.strokeStyle = getRandomColor();
+        } else {
+          context.beginPath();
+          context.moveTo(driverRoute[i - 1][0], driverRoute[i - 1][1]);
+          context.lineTo(driverRoute[i][0], driverRoute[i][1]);
+          context.lineWidth = 1;
+          context.stroke();
+          context.strokeStyle = getRandomColor();
+        }
+      }
+    }
+  }, [movements, mapType, driverRoute]);
 
   return (
     <>
+      <button
+        onClick={() => {
+          setMapType(!mapType);
+        }}
+      >
+        Type
+      </button>
       <canvas className="map" ref={ref} />
     </>
   );
