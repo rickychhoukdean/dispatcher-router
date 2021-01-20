@@ -9,7 +9,7 @@ function generateDriverRoute(movements, startingPoint = [0, 0]) {
   });
 
   // Initialize function
-  let res = [convertedArray[0][0]];
+  const res = [convertedArray[0][0]];
   convertedArray[0].shift();
   let min = Infinity;
   let minIndex = 0;
@@ -24,11 +24,12 @@ function generateDriverRoute(movements, startingPoint = [0, 0]) {
       minIndex = runner;
     }
 
+    // Reset runner after loop
     if (runner === convertedArray.length - 1) {
       runner = 0;
       min = Infinity;
 
-      let itemToPush = convertedArray[minIndex].shift();
+      const itemToPush = convertedArray[minIndex].shift();
 
       if (convertedArray[minIndex].length === 0) {
         convertedArray.splice(minIndex, 1);
@@ -45,30 +46,28 @@ function generateDriverRoute(movements, startingPoint = [0, 0]) {
 }
 
 function generateBestRoute(movements) {
-  let res = [];
-  let sum = 0;
+  let bestRouteArray = [];
   let min = Infinity;
-  let minIdx = 0;
-  let parsed = parseMovementsIntoArray(movements);
+  let res;
+  let parsedArray = parseMovementsIntoArray(movements);
 
-  for (let movement of parsed) {
-    let good = generateDriverRoute(movements, movement[0]);
-    res.push(good);
+  for (let movement of parsedArray) {
+    bestRouteArray.push(generateDriverRoute(movements, movement[0]));
   }
 
-  for (let item of res) {
-    for (let i = 0; i < item.length - 1; i++) {
-      sum += euclidianDistance(item[i], item[i + 1]);
+  for (let route of bestRouteArray) {
+    let sum = 0;
+    for (let i = 0; i < route.length - 1; i++) {
+      sum += euclidianDistance(route[i], route[i + 1]);
     }
-
     if (sum < min) {
       min = sum;
-      minIdx = item;
+      res = route;
     }
     sum = 0;
   }
 
-  return minIdx;
+  return res;
 }
 
 function parseMovementsIntoArray(movements) {
