@@ -101,15 +101,6 @@ function checkValidMovement(movements, newMovement) {
   );
 }
 
-function displayRoutes(route) {
-  let str = "";
-  for (let i = 0; i < route.length; i++) {
-    str += route[i];
-    if (i !== route.length - 1) {
-      str += " to ";
-    }
-  }
-  return str;
-}
 
-export { baseGenerateDriverRoute, checkValidMovement, displayRoutes };
+
+export { baseGenerateDriverRoute, checkValidMovement };
