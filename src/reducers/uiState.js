@@ -24,6 +24,12 @@ const uiState = (state = [], action) => {
         ...state,
         openEditDialog: false,
       };
+    case "CHANGE_SIDE_VIEW":
+      return {
+        ...state,
+        sideView: !state.sideView,
+      };
+
     default:
       return state;
   }

@@ -52,7 +52,11 @@
 
 
 }
-.route{
+
+.route {
   word-wrap: break-word;
 
+  &__item {
+    border-bottom: 5px solid red;
+  }
 }

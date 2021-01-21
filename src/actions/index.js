@@ -36,3 +36,7 @@ export const openEditForm = (id) => ({
 export const closeEditForm = () => ({
   type: "CLOSE_EDIT_FORM",
 });
+
+export const changeSideView = () => ({
+  type: "CHANGE_SIDE_VIEW",
+});
