@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { createRoute } from "../actions";
-import { generateBestRoute } from "../helpers";
-
 const mapStateToProps = (state) => {
   return {
     movements: state.movements,
@@ -10,17 +7,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createRoute: (route) => dispatch(createRoute(route)),
-  };
-};
-
-function ConnectedRouteDisplay({ driverRoute, movements, createRoute }) {
-  useEffect(() => {
-    createRoute(generateBestRoute(movements));
-  }, [movements, createRoute]);
-
+function ConnectedRouteDisplay({ driverRoute }) {
   let router = driverRoute.map((route, idx) => {
     return (
       <div key={idx} className="route__item">
@@ -36,9 +23,6 @@ function ConnectedRouteDisplay({ driverRoute, movements, createRoute }) {
   );
 }
 
-const RouteDisplay = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ConnectedRouteDisplay);
+const RouteDisplay = connect(mapStateToProps)(ConnectedRouteDisplay);
 
 export default RouteDisplay;

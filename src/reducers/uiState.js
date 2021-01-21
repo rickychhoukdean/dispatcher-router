@@ -29,6 +29,12 @@ const uiState = (state = [], action) => {
         ...state,
         sideView: !state.sideView,
       };
+      case "CHANGE_MAP_VIEW":
+        return {
+          ...state,
+          mapView: !state.mapView,
+        };
+  
 
     default:
       return state;

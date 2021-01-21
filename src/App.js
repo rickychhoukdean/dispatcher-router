@@ -7,7 +7,7 @@ import EditMovementForm from "./components/EditMovementForm";
 import MovementForm from "./components/MovementForm";
 import RouteDisplay from "./components/RouteDisplay";
 import RouteView from "./components/RouteView";
-import { changeSideView } from "./actions/";
+import { changeSideView, changeMapView } from "./actions/";
 
 const mapStateToProps = (state) => {
   return {
@@ -18,16 +18,19 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     changeSideView: () => dispatch(changeSideView()),
+    changeMapView: () => dispatch(changeMapView()),
   };
 };
 
-function ConnectedApp({ uiState, changeSideView }) {
+function ConnectedApp({ uiState, changeSideView, changeMapView }) {
   return (
     <>
-      <button onClick={changeSideView}>fsafasfsafsafiobsafoisab</button>
+      <button onClick={changeSideView}>Change side view</button>
+      <button onClick={changeMapView}>Change map view</button>
+
       <Navbar />
       {uiState.sideView ? <MovementList /> : <RouteDisplay />}
-      {uiState.sideView ? <MapView /> : <RouteView />}
+      {uiState.mapView ? <MapView /> : <RouteView />}
       <EditMovementForm />
       <MovementForm />
     </>

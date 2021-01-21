@@ -61,7 +61,7 @@ const ConnectedMovementForm = ({
         <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="col">
-              <label for="description">Description</label>
+              <label htmlFor="description">Description</label>
               <input
                 required
                 name="description"
@@ -74,7 +74,7 @@ const ConnectedMovementForm = ({
           </div>
           <div className="form-row">
             <div className="col">
-              <label for="start-lat">Start Latitude</label>
+              <label htmlFor="start-lat">Start Latitude</label>
               <input
                 required
                 name="start-lat"
@@ -87,7 +87,7 @@ const ConnectedMovementForm = ({
               />
             </div>
             <div className="col">
-              <label for="start-lon">Start Longitude</label>
+              <label htmlFor="start-lon">Start Longitude</label>
 
               <input
                 required
@@ -103,7 +103,7 @@ const ConnectedMovementForm = ({
           </div>
           <div className="form-row">
             <div className="col">
-              <label for="end-lat">End Latitude</label>
+              <label htmlFor="end-lat">End Latitude</label>
 
               <input
                 required
@@ -117,7 +117,7 @@ const ConnectedMovementForm = ({
               />
             </div>
             <div className="col">
-              <label for="end-long">End Longitude</label>
+              <label htmlFor="end-long">End Longitude</label>
 
               <input
                 required

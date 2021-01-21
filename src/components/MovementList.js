@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import MovementListItem from "./MovementListItem";
 import Button from "react-bootstrap/Button";
-import { openForm } from "../actions";
+import { openForm, createRoute } from "../actions";
+import { generateBestRoute } from "../helpers";
 
 const mapStateToProps = (state) => {
   return {
     movements: state.movements,
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     openForm: (uiState) => dispatch(openForm(uiState)),
+    createRoute: (route) => dispatch(createRoute(route)),
   };
 };
 
-function ConnectedMovementList({ movements, openForm }) {
+function ConnectedMovementList({ createRoute, movements, openForm }) {
   let movementList;
+
+  useEffect(() => {
+    createRoute(generateBestRoute(movements));
+  }, [movements, createRoute]);
 
   if (movements.length > 0) {
     movementList = movements.map((movement, idx) => {

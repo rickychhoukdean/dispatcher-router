@@ -40,3 +40,6 @@ export const closeEditForm = () => ({
 export const changeSideView = () => ({
   type: "CHANGE_SIDE_VIEW",
 });
+export const changeMapView = () => ({
+  type: "CHANGE_MAP_VIEW",
+});
