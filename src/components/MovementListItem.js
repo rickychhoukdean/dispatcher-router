@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteMovement, openEditForm } from "../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -38,20 +40,20 @@ function ConnectedMovementListItem({
       </div>
       <div className="movement__list-item--button-holder">
         <button
-          className="movement__list-item--delete btn btn-primary"
-          onClick={() => {
-            deleteMovement(id);
-          }}
-        >
-          Delete
-        </button>
-        <button
           className="movement__list-item--modify btn btn-primary"
           onClick={() => {
             openForm(id);
           }}
         >
-          Modify
+          <FontAwesomeIcon icon={faEdit} />
+        </button>
+        <button
+          className="movement__list-item--delete btn btn-primary"
+          onClick={() => {
+            deleteMovement(id);
+          }}
+        >
+          <FontAwesomeIcon icon={faTrash} />
         </button>
       </div>
     </div>

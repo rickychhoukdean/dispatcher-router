@@ -41,6 +41,11 @@ function ConnectedRouteView({ driverRoute }) {
         context.strokeStyle = getRandomColor();
       }
 
+      context.beginPath();
+      context.arc(driverRoute[i][0], driverRoute[i][1], 5, 0, 2 * Math.PI);
+
+      context.fill();
+
       context.font = "30px Arial";
       context.fillText(i + 1, driverRoute[i][0], driverRoute[i][1]);
     }

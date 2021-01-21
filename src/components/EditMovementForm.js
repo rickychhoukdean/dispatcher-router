@@ -59,67 +59,83 @@ const ConnectedEditMovementForm = ({
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={handleSubmit}>
-          <input
-            required
-            name="description"
-            type="text"
-            placeholder="Description"
-            class="form-control"
-          />
-          <div className="row">
-            <div class="col">
+          <div className="form-row">
+            <div className="col">
+              <label for="description">Description</label>
+              <input
+                required
+                name="description"
+                id="description"
+                type="text"
+                placeholder="Description"
+                className="form-control"
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="col">
+              <label for="start-lat">Start Latitude</label>
               <input
                 required
                 name="start-lat"
+                id="start-lat"
                 type="Number"
                 placeholder="Start latitude"
                 defaultValue={uiState.movementToEdit.start[0]}
                 min={MIN_LATITUDE}
                 max={MAX_LATITUDE}
-                class="form-control"
+                className="form-control"
               />
             </div>
-            <div class="col">
+            <div className="col">
+              <label for="start-lon">Start Longitude</label>
+
               <input
                 required
                 name="start-lon"
+                id="start-lon"
                 type="Number"
                 placeholder="Start longitude"
                 defaultValue={uiState.movementToEdit.start[1]}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}
-                class="form-control"
+                className="form-control"
               />
             </div>
           </div>
+          <div className="form-row">
+            <div className="col">
+              <label for="end-lat">End Latitude</label>
 
-          <div className="row">
-            <div class="col">
               <input
                 required
                 name="end-lat"
+                id="end-lat"
                 type="Number"
                 placeholder="End latitude"
                 defaultValue={uiState.movementToEdit.end[0]}
                 min={MIN_LATITUDE}
                 max={MAX_LATITUDE}
-                class="form-control"
+                className="form-control"
               />
             </div>
-            <div class="col">
+            <div className="col">
+              <label for="end-long">End Longitude</label>
+
               <input
                 required
                 name="end-lon"
+                id="end-lon"
                 type="Number"
                 placeholder="End longitude"
                 defaultValue={uiState.movementToEdit.end[1]}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}
-                class="form-control"
+                className="form-control"
               />
             </div>
           </div>
-          <button className="btn btn-primary">Post</button>
+          <button className="btn btn-primary">Submit</button>
         </form>
       </Modal.Body>
     </Modal>
