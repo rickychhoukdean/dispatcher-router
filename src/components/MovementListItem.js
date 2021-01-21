@@ -38,7 +38,7 @@ function ConnectedMovementListItem({
       </div>
       <div className="movement__list-item--button-holder">
         <button
-          className="movement__list-item--delete"
+          className="movement__list-item--delete btn btn-primary"
           onClick={() => {
             deleteMovement(id);
           }}
@@ -46,7 +46,7 @@ function ConnectedMovementListItem({
           Delete
         </button>
         <button
-          className="movement__list-item--modify"
+          className="movement__list-item--modify btn btn-primary"
           onClick={() => {
             openForm(id);
           }}

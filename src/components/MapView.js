@@ -12,9 +12,7 @@ function ConnectedMapView({ movements }) {
   useEffect(() => {
     let canvas = ref.current;
     canvas.width = 1000;
-    canvas.height = 750;
-    canvas.style.width = "800px";
-    canvas.style.height = "800px";
+    canvas.height = 1000;
     let context = canvas.getContext("2d");
     movements.forEach((movement) => {
       context.beginPath();

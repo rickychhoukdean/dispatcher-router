@@ -64,45 +64,58 @@ const ConnectedMovementForm = ({
             name="description"
             type="text"
             placeholder="Description"
+            class="form-control"
           />
+          <div className="row">
+            <div class="col">
+              <input
+                required
+                name="start-lat"
+                type="Number"
+                placeholder="Start latitude"
+                min={MIN_LATITUDE}
+                max={MAX_LATITUDE}
+                class="form-control"
+              />
+            </div>
+            <div class="col">
+              <input
+                required
+                name="start-lon"
+                type="Number"
+                placeholder="Start longitude"
+                min={MIN_LONGITUDE}
+                max={MAX_LONGITUDE}
+                class="form-control"
+              />
+            </div>
+          </div>
 
-          <input
-            required
-            name="start-lat"
-            type="Number"
-            placeholder="Start latitude"
-            min={MIN_LATITUDE}
-            max={MAX_LATITUDE}
-          />
-
-          <input
-            required
-            name="start-lon"
-            type="Number"
-            placeholder="Start longitude"
-            min={MIN_LONGITUDE}
-            max={MAX_LONGITUDE}
-          />
-
-          <input
-            required
-            name="end-lat"
-            type="Number"
-            placeholder="End latitude"
-            min={MIN_LATITUDE}
-            max={MAX_LATITUDE}
-          />
-
-          <input
-            required
-            name="end-lon"
-            type="Number"
-            placeholder="End longitude"
-            min={MIN_LONGITUDE}
-            max={MAX_LONGITUDE}
-          />
-
-          <button>Post</button>
+          <div className="row">
+            <div class="col">
+              <input
+                required
+                name="end-lat"
+                type="Number"
+                placeholder="End latitude"
+                min={MIN_LATITUDE}
+                max={MAX_LATITUDE}
+                class="form-control"
+              />
+            </div>
+            <div class="col">
+              <input
+                required
+                name="end-lon"
+                type="Number"
+                placeholder="End longitude"
+                min={MIN_LONGITUDE}
+                max={MAX_LONGITUDE}
+                class="form-control"
+              />
+            </div>
+          </div>
+          <button className="btn btn-primary">Post</button>
         </form>
       </Modal.Body>
     </Modal>
