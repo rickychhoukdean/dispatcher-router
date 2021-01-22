@@ -23,5 +23,6 @@ export const initialState = {
     movementToEdit: { start: [0, 0], end: [0, 0], description: "" },
     sideView: true,
     mapView: true,
+    activeMovement: null,
   },
 };

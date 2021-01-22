@@ -29,13 +29,23 @@ const uiState = (state = [], action) => {
         ...state,
         sideView: !state.sideView,
       };
-      case "CHANGE_MAP_VIEW":
-        return {
-          ...state,
-          mapView: !state.mapView,
-        };
-  
+    case "CHANGE_MAP_VIEW":
+      return {
+        ...state,
+        mapView: !state.mapView,
+      };
 
+    case "SELECT_ACTIVE_MOVEMENT":
+      console.log(action.payload);
+      return {
+        ...state,
+        activeMovement: action.payload,
+      };
+    case "DESELECT_ACTIVE_MOVEMENT":
+      return {
+        ...state,
+        activeMovement: null,
+      };
     default:
       return state;
   }

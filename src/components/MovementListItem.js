@@ -1,6 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteMovement, openEditForm } from "../actions";
+import {
+  deleteMovement,
+  openEditForm,
+  selectActiveMovement,
+  deselectActiveMovement,
+} from "../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,6 +13,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteMovement: (movement) => dispatch(deleteMovement(movement)),
     openEditForm: (uiState) => dispatch(openEditForm(uiState)),
+    selectActiveMovement: (id) => dispatch(selectActiveMovement(id)),
+    deselectActiveMovement: () => dispatch(deselectActiveMovement()),
   };
 };
 
@@ -18,6 +25,8 @@ function ConnectedMovementListItem({
   end,
   description,
   id,
+  selectActiveMovement,
+  deselectActiveMovement,
 }) {
   const openForm = () => {
     let payload = { id, start, end, description };
@@ -26,7 +35,15 @@ function ConnectedMovementListItem({
   };
 
   return (
-    <div className="movement__list-item">
+    <div
+      className="movement__list-item"
+      onMouseOver={() => {
+        selectActiveMovement(id);
+      }}
+      onMouseOut={() => {
+        deselectActiveMovement();
+      }}
+    >
       <div className="movement__list-item--description-holder">
         <h3 className="movement__list-item--description">
           Description:{description}

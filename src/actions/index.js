@@ -43,3 +43,10 @@ export const changeSideView = () => ({
 export const changeMapView = () => ({
   type: "CHANGE_MAP_VIEW",
 });
+export const selectActiveMovement = (id) => ({
+  type: "SELECT_ACTIVE_MOVEMENT",
+  payload: id,
+});
+export const deselectActiveMovement = () => ({
+  type: "DESELECT_ACTIVE_MOVEMENT",
+});
