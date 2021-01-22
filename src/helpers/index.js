@@ -46,16 +46,20 @@ function generateDriverRoute(movements, startingPoint = [0, 0]) {
 }
 
 function generateBestRoute(movements) {
+  if (movements.length === 0) {
+    return [];
+  }
+
   let bestRouteArray = [];
   let min = Infinity;
   let res;
   let parsedArray = parseMovementsIntoArray(movements);
 
-  for (let movement of parsedArray) {
+  for (const movement of parsedArray) {
     bestRouteArray.push(generateDriverRoute(movements, movement[0]));
   }
 
-  for (let route of bestRouteArray) {
+  for (const route of bestRouteArray) {
     let sum = 0;
     for (let i = 0; i < route.length - 1; i++) {
       sum += euclidianDistance(route[i], route[i + 1]);
@@ -89,7 +93,7 @@ function euclidianDistance(start, end) {
     );
   } else return Infinity;
 }
-
+// Original route generating function before optimization
 function baseGenerateDriverRoute(movements) {
   if (movements.length === 0) {
     return [];
@@ -113,6 +117,13 @@ function baseGenerateDriverRoute(movements) {
   return res;
 }
 
+
+function checkValidMovement(movements, newMovement) {
+  return (
+    !duplicateObjectInArray(movements, newMovement) &&
+    !compareArray(newMovement["start"], newMovement["end"])
+  );
+}
 function compareArray(a, b) {
   return a.length === b.length && a.every((v, i) => v === b[i]);
 }
@@ -130,16 +141,7 @@ function duplicateObjectInArray(array, obj) {
   return false;
 }
 
-function checkValidMovement(movements, newMovement) {
-  return (
-    !duplicateObjectInArray(movements, newMovement) &&
-    !compareArray(newMovement["start"], newMovement["end"])
-  );
-}
-
 export {
-  baseGenerateDriverRoute,
   checkValidMovement,
-  generateDriverRoute,
   generateBestRoute,
 };
