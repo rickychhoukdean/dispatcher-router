@@ -42,7 +42,7 @@ function ConnectedMovementList({ createRoute, movements, openForm }) {
     <div className="sidebar">
       <div className="movement__list">
         <button className="btn btn-outline-primary" onClick={openForm}>
-          Add new Movement
+          Add New Movement
         </button>
         {movementList}
       </div>

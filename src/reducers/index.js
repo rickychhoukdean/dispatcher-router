@@ -12,9 +12,11 @@ export default combineReducers({
 export const initialState = {
   movements: [
     { start: ["300", "400"], end: ["500", "500"], description: "first" },
-    { start: ["100", "100"], end: ["300", "300"], description: "2nd" },
-    { start: ["0", "0"], end: ["500", "500"], description: "rd" },
+    { start: ["50", "50"], end: ["300", "300"], description: "2nd" },
     { start: ["200", "100"], end: ["300", "300"], description: "4th" },
+    { start: ["500", "600"], end: ["700", "500"], description: "4th" },
+    { start: ["300", "800"], end: ["500", "700"], description: "4th" },
+
   ],
   driverRoute: [],
   uiState: {

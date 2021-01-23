@@ -24,7 +24,7 @@ function ConnectedRouteView({ driverRoute }) {
     }
 
     for (let i = 0; i < driverRoute.length; i++) {
-      context.font = "30px Arial";
+      context.font = "20px Arial";
       if (i === 0) {
         context.beginPath();
         context.moveTo(driverRoute[i][0], driverRoute[i][1]);
@@ -46,8 +46,8 @@ function ConnectedRouteView({ driverRoute }) {
 
       context.fill();
 
-      context.font = "30px Arial";
-      context.fillText(i + 1, driverRoute[i][0], driverRoute[i][1]);
+      context.font = "20px Arial";
+      context.fillText(`${i + 1}. ${driverRoute[i][0]},${driverRoute[i][1]}`, driverRoute[i][0], driverRoute[i][1]);
     }
   }, [driverRoute]);
 
