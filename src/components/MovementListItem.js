@@ -56,22 +56,29 @@ function ConnectedMovementListItem({
         </div>
       </div>
       <div className="movement__list-item--button-holder">
-        <button
-          className="movement__list-item--modify btn btn-primary"
+        <div
+          className="button-container"
           onClick={() => {
             openForm(id);
           }}
         >
-          <FontAwesomeIcon icon={faEdit} />
-        </button>
-        <button
-          className="movement__list-item--delete btn btn-primary"
+          <button className="movement__list-item--modify btn btn-custom outline">
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+          <div>Edit</div>
+        </div>
+
+        <div
+          className="button-container"
           onClick={() => {
             deleteMovement(id);
           }}
         >
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
+          <button className="movement__list-item--delete btn btn-custom outline">
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+          <div>Delete</div>
+        </div>
       </div>
     </div>
   );

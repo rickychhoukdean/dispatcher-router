@@ -47,9 +47,9 @@ function ConnectedMapView({ movements, uiState }) {
   }, [movements, uiState.activeMovement]);
 
   return (
-    <>
+    <div className="map__container">
       <canvas className="map" ref={ref} />
-    </>
+    </div>
   );
 }
 

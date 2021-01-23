@@ -1,12 +1,19 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
 .map {
   width: 69vw;
-  height: 100vh;
+  height: 98vh;
   position: fixed;
   right: 0;
   bottom: 0;
   top: 0;
   background-color: #f1f3f4;
-  display: inline-block;
 }
 
 .sidebar {
@@ -50,6 +57,10 @@
       display: flex;
       align-items: center;
     }
+
+    &:hover {
+      background-color: #f7f7f8;
+    }
   }
 
 
@@ -62,5 +73,36 @@
     border-bottom: 3px solid #e6e6e6;
     padding: 14px 0;
     font-size: 1rem;
+
+    &:hover {
+      background-color: #f7f7f8;
+    }
+
   }
+}
+
+.form {
+  &__section {
+    border-bottom: grey 1px solid;
+  }
+}
+
+.btn {
+  &-custom {
+    color: #0275d8 !important;
+    border-color: #0275d8 !important;
+    border-radius: 50% !important;
+
+    &:hover {
+      background-color: #f1f3f4;
+
+    }
+  }
+}
+
+.button-container {
+  padding: 1rem;
+  color: #0275d8 !important;
+  text-align: center;
+  cursor: pointer;
 }

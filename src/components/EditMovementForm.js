@@ -10,6 +10,9 @@ import {
   MIN_LONGITUDE,
 } from "../constants/coordinates";
 
+const LATITUDE_PLACEHOLDER_TEXT = `${MIN_LATITUDE} - ${MAX_LATITUDE}`;
+const LONGITUDE_PLACEHOLDER_TEXT = `${MIN_LONGITUDE} - ${MAX_LONGITUDE}`;
+
 const mapDispatchToProps = (dispatch) => {
   return {
     editMovement: (id, movement) => dispatch(editMovement(id, movement)),
@@ -59,7 +62,8 @@ const ConnectedEditMovementForm = ({
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={handleSubmit}>
-          <div className="form-row">
+          <h4 className="form__section">General</h4>
+          <div className="form-row form-group">
             <div className="col">
               <label htmlFor="description">Description</label>
               <input
@@ -67,20 +71,22 @@ const ConnectedEditMovementForm = ({
                 name="description"
                 id="description"
                 type="text"
-                placeholder="Description"
+                placeholder="Movement description"
                 className="form-control"
+                defaultValue={uiState.movementToEdit.description}
               />
             </div>
           </div>
-          <div className="form-row">
+          <h4 className="form__section">Start</h4>
+          <div className="form-row form-group">
             <div className="col">
-              <label htmlFor="start-lat">Start Latitude</label>
+              <label htmlFor="start-lat">Latitude</label>
               <input
                 required
                 name="start-lat"
                 id="start-lat"
                 type="Number"
-                placeholder="Start latitude"
+                placeholder={LATITUDE_PLACEHOLDER_TEXT}
                 defaultValue={uiState.movementToEdit.start[0]}
                 min={MIN_LATITUDE}
                 max={MAX_LATITUDE}
@@ -88,14 +94,14 @@ const ConnectedEditMovementForm = ({
               />
             </div>
             <div className="col">
-              <label htmlFor="start-lon">Start Longitude</label>
+              <label htmlFor="start-lon">Longitude</label>
 
               <input
                 required
                 name="start-lon"
                 id="start-lon"
                 type="Number"
-                placeholder="Start longitude"
+                placeholder={LONGITUDE_PLACEHOLDER_TEXT}
                 defaultValue={uiState.movementToEdit.start[1]}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}
@@ -103,16 +109,17 @@ const ConnectedEditMovementForm = ({
               />
             </div>
           </div>
-          <div className="form-row">
+          <h4 className="form__section">End</h4>
+          <div className="form-row form-group">
             <div className="col">
-              <label htmlFor="end-lat">End Latitude</label>
+              <label htmlFor="end-lat">Latitude</label>
 
               <input
                 required
                 name="end-lat"
                 id="end-lat"
                 type="Number"
-                placeholder="End latitude"
+                placeholder={LATITUDE_PLACEHOLDER_TEXT}
                 defaultValue={uiState.movementToEdit.end[0]}
                 min={MIN_LATITUDE}
                 max={MAX_LATITUDE}
@@ -120,14 +127,14 @@ const ConnectedEditMovementForm = ({
               />
             </div>
             <div className="col">
-              <label htmlFor="end-long">End Longitude</label>
+              <label htmlFor="end-long">Longitude</label>
 
               <input
                 required
                 name="end-lon"
                 id="end-lon"
                 type="Number"
-                placeholder="End longitude"
+                placeholder={LONGITUDE_PLACEHOLDER_TEXT}
                 defaultValue={uiState.movementToEdit.end[1]}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}

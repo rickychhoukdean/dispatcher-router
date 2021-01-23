@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import MovementListItem from "./MovementListItem";
-import Button from "react-bootstrap/Button";
 import { openForm, createRoute } from "../actions";
 import { generateBestRoute } from "../helpers";
 
@@ -42,9 +41,9 @@ function ConnectedMovementList({ createRoute, movements, openForm }) {
   return (
     <div className="sidebar">
       <div className="movement__list">
-        <Button variant="primary" onClick={openForm}>
+        <button className="btn btn-outline-primary" onClick={openForm}>
           Add new Movement
-        </Button>
+        </button>
         {movementList}
       </div>
     </div>
