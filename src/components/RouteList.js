@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-function ConnectedRouteDisplay({ driverRoute }) {
+function ConnectedRouteList({ driverRoute }) {
   let router = driverRoute.map((route, idx) => {
     return (
       <div key={idx} className="route__item">
@@ -17,12 +17,13 @@ function ConnectedRouteDisplay({ driverRoute }) {
   });
 
   return (
-    <div className="sidebar">
+    <div>
+      <h3>Route List</h3>
       <div className="route">{router}</div>
     </div>
   );
 }
 
-const RouteDisplay = connect(mapStateToProps)(ConnectedRouteDisplay);
+const RouteList = connect(mapStateToProps)(ConnectedRouteList);
 
-export default RouteDisplay;
+export default RouteList;

@@ -7,31 +7,26 @@
 }
 
 .map {
-  width: 69vw;
-  height: 98vh;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  top: 0;
   background-color: #f1f3f4;
+  height: 1000px;
+  width: 1000px;
+  overflow: scroll;
+
+  &__container {
+    max-height: 100vh;
+    max-width: 100%;
+  }
 }
 
-.sidebar {
-  width: 30vw;
-  height: 80vh;
-  display: inline-block;
-  margin: 1rem;
-}
 
 
 .movement {
 
   &__list {
     overflow-y: scroll;
-    height: 80vh;
-    width: 30vw;
-    height: 80vh;
-    display: inline-block;
+    max-height: 1000px;
+    min-height: 1000px;
+    width: 100%;
   }
 
 
@@ -105,4 +100,9 @@
   color: #0275d8 !important;
   text-align: center;
   cursor: pointer;
+}
+
+.row {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

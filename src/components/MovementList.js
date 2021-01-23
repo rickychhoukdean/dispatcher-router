@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import MovementListItem from "./MovementListItem";
-import { openForm, createRoute } from "../actions";
+import { createRoute } from "../actions";
 import { generateBestRoute } from "../helpers";
 
 const mapStateToProps = (state) => {
@@ -11,12 +11,11 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    openForm: (uiState) => dispatch(openForm(uiState)),
     createRoute: (route) => dispatch(createRoute(route)),
   };
 };
 
-function ConnectedMovementList({ createRoute, movements, openForm }) {
+function ConnectedMovementList({ createRoute, movements }) {
   let movementList;
 
   useEffect(() => {
@@ -39,13 +38,9 @@ function ConnectedMovementList({ createRoute, movements, openForm }) {
     movementList = <div>Please add a movement for the driver!</div>;
   }
   return (
-    <div className="sidebar">
-      <div className="movement__list">
-        <button className="btn btn-outline-primary" onClick={openForm}>
-          Add New Movement
-        </button>
-        {movementList}
-      </div>
+    <div>
+      <h3>Movement List</h3>
+      <div className="movement__list">{movementList}</div>
     </div>
   );
 }

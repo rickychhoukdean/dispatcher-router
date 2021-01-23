@@ -1,13 +1,12 @@
 import "./App.scss";
 import { connect } from "react-redux";
-import MapView from "./components/MapView";
+import MovementMapView from "./components/MovementMapView";
 import Navbar from "./components/NavBar";
 import MovementList from "./components/MovementList";
 import EditMovementForm from "./components/EditMovementForm";
 import MovementForm from "./components/MovementForm";
-import RouteDisplay from "./components/RouteDisplay";
-import RouteView from "./components/RouteView";
-import { changeSideView, changeMapView } from "./actions/";
+import RouteList from "./components/RouteList";
+import RouteMapView from "./components/RouteMapView";
 
 const mapStateToProps = (state) => {
   return {
@@ -15,28 +14,24 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeSideView: () => dispatch(changeSideView()),
-    changeMapView: () => dispatch(changeMapView()),
-  };
-};
-
-function ConnectedApp({ uiState, changeSideView, changeMapView }) {
+function ConnectedApp({ uiState }) {
   return (
-    <>
-      <button onClick={changeSideView}>Change side view</button>
-      <button onClick={changeMapView}>Change map view</button>
-
+    <div className="app">
       <Navbar />
-      {uiState.sideView ? <MovementList /> : <RouteDisplay />}
-      {uiState.mapView ? <MapView /> : <RouteView />}
-      <EditMovementForm />
-      <MovementForm />
-    </>
+      <div className="row">
+        <div className="sidebar col-sm-3">
+          {uiState.sideView ? <MovementList /> : <RouteList />}
+        </div>
+        <div className="map__container col-sm-9">
+          {uiState.mapView ? <MovementMapView /> : <RouteMapView />}
+        </div>
+        <EditMovementForm />
+        <MovementForm />
+      </div>
+    </div>
   );
 }
 
-const App = connect(mapStateToProps, mapDispatchToProps)(ConnectedApp);
+const App = connect(mapStateToProps)(ConnectedApp);
 
 export default App;
