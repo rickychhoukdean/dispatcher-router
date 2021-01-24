@@ -39,7 +39,7 @@ function ConnectedMovementList({ createRoute, movements }) {
   }
   return (
     <div>
-      <h3>Movement List</h3>
+      <h4>Movement List</h4>
       <div className="movement__list">{movementList}</div>
     </div>
   );

@@ -36,7 +36,6 @@ const uiState = (state = [], action) => {
       };
 
     case "SELECT_ACTIVE_MOVEMENT":
-      console.log(action.payload);
       return {
         ...state,
         activeMovement: action.payload,

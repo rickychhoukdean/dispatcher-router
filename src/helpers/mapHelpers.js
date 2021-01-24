@@ -1,12 +1,20 @@
+import {
+  MAP_FONT,
+  MAP_LINE_COLOR,
+  MAP_HIGHLIGHT_COLOR,
+  CIRCLE_RADIUS,
+  LINE_WIDTH,
+  SELECTED_LINE_WIDTH,
+} from "../constants/map";
+
 function generateMovementsOnMap(canvas, movements, uiState) {
   let context = canvas.getContext("2d");
-
   fitToContainer(canvas);
 
   movements.forEach((movement, idx) => {
     context.beginPath();
-    context.font = "30px Arial";
-    context.strokeStyle = "black";
+    context.font = MAP_FONT;
+    context.strokeStyle = MAP_LINE_COLOR;
     context.fillText(
       movement.description,
       movement.start[0],
@@ -14,22 +22,21 @@ function generateMovementsOnMap(canvas, movements, uiState) {
     );
     context.moveTo(movement.start[0], movement.start[1]);
     context.lineTo(movement.end[0], movement.end[1]);
-    context.lineWidth = 1;
+    context.lineWidth = LINE_WIDTH;
     context.stroke();
 
     context.beginPath();
-
-    context.fillStyle = "black";
-    context.arc(movement.start[0], movement.start[1], 5, 0, 2 * Math.PI);
-    context.arc(movement.end[0], movement.end[1], 5, 0, 2 * Math.PI);
+    context.fillStyle = MAP_LINE_COLOR;
+    context.arc(movement.start[0], movement.start[1], CIRCLE_RADIUS, 0, 2 * Math.PI);
+    context.arc(movement.end[0], movement.end[1], CIRCLE_RADIUS, 0, 2 * Math.PI);
     context.fill();
 
     if (uiState.activeMovement === idx) {
       context.beginPath();
-      context.strokeStyle = "#FF0000";
+      context.strokeStyle = MAP_HIGHLIGHT_COLOR;
       context.moveTo(movement.start[0], movement.start[1]);
       context.lineTo(movement.end[0], movement.end[1]);
-      context.lineWidth = 3;
+      context.lineWidth = SELECTED_LINE_WIDTH;
       context.stroke();
     }
   });
@@ -37,34 +44,31 @@ function generateMovementsOnMap(canvas, movements, uiState) {
 
 function generateRoutesOnMap(driverRoute, canvas) {
   let context = canvas.getContext("2d");
-
   fitToContainer(canvas);
 
-
   for (let i = 0; i < driverRoute.length; i++) {
-    context.font = "20px Arial";
     if (i === 0) {
       context.beginPath();
       context.moveTo(driverRoute[i][0], driverRoute[i][1]);
       context.lineTo(driverRoute[i + 1][0], driverRoute[i + 1][1]);
-      context.lineWidth = 1;
+      context.lineWidth = LINE_WIDTH;
       context.stroke();
       context.strokeStyle = getRandomColor();
-    } else {
+    } 
+    else {
       context.beginPath();
       context.moveTo(driverRoute[i - 1][0], driverRoute[i - 1][1]);
       context.lineTo(driverRoute[i][0], driverRoute[i][1]);
-      context.lineWidth = 1;
+      context.lineWidth = LINE_WIDTH;
       context.stroke();
       context.strokeStyle = getRandomColor();
     }
 
     context.beginPath();
-    context.arc(driverRoute[i][0], driverRoute[i][1], 5, 0, 2 * Math.PI);
-
+    context.arc(driverRoute[i][0], driverRoute[i][1], CIRCLE_RADIUS, 0, 2 * Math.PI);
     context.fill();
 
-    context.font = "20px Arial";
+    context.font = MAP_FONT;
     context.fillText(
       `${i + 1}. ${driverRoute[i][0]},${driverRoute[i][1]}`,
       driverRoute[i][0],

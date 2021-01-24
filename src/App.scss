@@ -39,7 +39,7 @@
     padding: 1rem 0;
 
     &--description {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       word-wrap: break-word;
     }
 
@@ -80,6 +80,11 @@
   &__section {
     border-bottom: grey 1px solid;
   }
+
+  &__errors {
+    color: red;
+    padding: 1rem 0;
+  }
 }
 
 .btn {
@@ -96,7 +101,6 @@
 }
 
 .button-container {
-  padding: 1rem;
   color: #0275d8 !important;
   text-align: center;
   cursor: pointer;

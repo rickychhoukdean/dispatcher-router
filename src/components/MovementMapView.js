@@ -18,7 +18,7 @@ function ConnectedMovementMapView({ movements, uiState }) {
 
   return (
     <div>
-      <h3>Movement Map</h3>
+      <h4>Movement Map</h4>
       <canvas className="map" ref={ref} />
     </div>
   );

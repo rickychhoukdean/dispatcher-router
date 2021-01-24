@@ -45,19 +45,17 @@ function ConnectedMovementListItem({
       }}
     >
       <div className="movement__list-item--description-holder">
-        <h3 className="movement__list-item--description">
-          Description:{description}
-        </h3>
+        <div className="movement__list-item--description">{description}</div>
         <div className="movement__list-item--coordinate">
-          Start Lat Long ({start[0]},{start[1]})
+          Start: ({start[0]},{start[1]})
         </div>
         <div className="movement__list-item--coordinate">
-          End Lat Long ({end[0]},{end[1]})
+          End: ({end[0]},{end[1]})
         </div>
       </div>
       <div className="movement__list-item--button-holder">
         <div
-          className="button-container"
+          className="button-container p-2"
           onClick={() => {
             openForm(id);
           }}
@@ -69,7 +67,7 @@ function ConnectedMovementListItem({
         </div>
 
         <div
-          className="button-container"
+          className="button-container p-2"
           onClick={() => {
             deleteMovement(id);
           }}

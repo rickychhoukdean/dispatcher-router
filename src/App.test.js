@@ -48,12 +48,12 @@ describe("checkValidMovement", () => {
   test("Return false if there is adding duplicate object in the array", () => {
     const movements = [{ start: [1, 1], end: [3, 3], description: "a" }];
     const newMovement = { start: [1, 1], end: [3, 3], description: "a" };
-    expect(checkValidMovement(movements, newMovement)).toBe(false);
+    expect(checkValidMovement(movements, newMovement)).toContain("Error");
   });
   test("Return false if adding a movement with same start and end", () => {
     const movements = [{ start: [1, 1], end: [3, 3], description: "a" }];
     const newMovement = { start: [1, 1], end: [1, 1], description: "a" };
-    expect(checkValidMovement(movements, newMovement)).toBe(false);
+    expect(checkValidMovement(movements, newMovement)).toContain("Error");
   });
   test("Return true if adding a new movement with a different start and end", () => {
     const movements = [{ start: [1, 1], end: [3, 3], description: "a" }];

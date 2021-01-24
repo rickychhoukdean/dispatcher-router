@@ -117,12 +117,16 @@ function baseGenerateDriverRoute(movements) {
   return res;
 }
 
-
 function checkValidMovement(movements, newMovement) {
-  return (
-    !duplicateObjectInArray(movements, newMovement) &&
-    !compareArray(newMovement["start"], newMovement["end"])
-  );
+  if (duplicateObjectInArray(movements, newMovement)) {
+    return "Error: This movement already exists, please change parameters!";
+  }
+
+  if (compareArray(newMovement["start"], newMovement["end"])) {
+    return "Error: Start and end points cannot be the same";
+  }
+
+  return true;
 }
 function compareArray(a, b) {
   return a.length === b.length && a.every((v, i) => v === b[i]);
@@ -141,7 +145,4 @@ function duplicateObjectInArray(array, obj) {
   return false;
 }
 
-export {
-  checkValidMovement,
-  generateBestRoute,
-};
+export { checkValidMovement, generateBestRoute };

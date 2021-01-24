@@ -18,7 +18,7 @@ function ConnectedRouteMapView({ driverRoute }) {
 
   return (
     <div>
-      <h3>Route Map</h3>
+      <h4>Route Map</h4>
       <canvas className="map" ref={ref} />
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { editMovement, closeEditForm } from "../actions";
 import { checkValidMovement } from "../helpers";
@@ -33,6 +33,8 @@ const ConnectedEditMovementForm = ({
   editMovement,
   movements,
 }) => {
+  const [errors, setErrors] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const description = e.target["description"].value;
@@ -46,17 +48,22 @@ const ConnectedEditMovementForm = ({
       end: [endLat, endLon],
       description,
     };
-    if (checkValidMovement(movements, movement)) {
-      // TODO: Better alert
+    if (checkValidMovement(movements, movement) === true) {
       editMovement(uiState.movementToEdit.id, movement);
+      setErrors(null);
       closeEditForm();
     } else {
-      alert("no");
+      setErrors(checkValidMovement(movements, movement));
     }
   };
 
+  const handleClose = () => {
+    setErrors(null);
+    closeEditForm();
+  };
+
   return (
-    <Modal show={uiState.openEditDialog} onHide={closeEditForm}>
+    <Modal show={uiState.openEditDialog} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Edit Movement Form</Modal.Title>
       </Modal.Header>
@@ -142,6 +149,7 @@ const ConnectedEditMovementForm = ({
               />
             </div>
           </div>
+          <div className="form__errors">{errors}</div>
           <button className="btn btn-primary">Submit</button>
         </form>
       </Modal.Body>

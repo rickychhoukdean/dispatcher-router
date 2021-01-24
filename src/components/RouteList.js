@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import RouteListItem from "./RouteListItem";
+
 const mapStateToProps = (state) => {
   return {
     movements: state.movements,
@@ -9,16 +11,12 @@ const mapStateToProps = (state) => {
 
 function ConnectedRouteList({ driverRoute }) {
   let router = driverRoute.map((route, idx) => {
-    return (
-      <div key={idx} className="route__item">
-        {idx + 1}. ({route[0]},{route[1]})
-      </div>
-    );
+    return <RouteListItem key={idx} pos={idx} route={route}></RouteListItem>;
   });
 
   return (
     <div>
-      <h3>Route List</h3>
+      <h4>Route List</h4>
       <div className="route">{router}</div>
     </div>
   );

@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => {
 
 function ConnectedNavBar({ changeMapView, changeSideView, openForm }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <h2>Dispatcher Router</h2>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
+      <h1>Dispatcher Router</h1>
       <button
         className="navbar-toggler"
         type="button"

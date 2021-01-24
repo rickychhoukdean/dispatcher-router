@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createMovement, closeForm } from "../actions";
 import { checkValidMovement } from "../helpers";
@@ -33,6 +33,8 @@ const ConnectedMovementForm = ({
   createMovement,
   movements,
 }) => {
+  const [errors, setErrors] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const description = e.target["description"].value;
@@ -41,17 +43,17 @@ const ConnectedMovementForm = ({
     const endLat = e.target["end-lat"].value;
     const endLon = e.target["end-lon"].value;
 
-    const payload = {
+    const movement = {
       start: [startLat, startLon],
       end: [endLat, endLon],
       description,
     };
-    if (checkValidMovement(movements, payload)) {
-      // TODO: Better alert
-      createMovement(payload);
+    if (checkValidMovement(movements, movement) === true) {
+      createMovement(movement);
+      setErrors(null);
       closeForm();
     } else {
-      alert("no");
+      setErrors(checkValidMovement(movements, movement));
     }
   };
 
@@ -137,6 +139,7 @@ const ConnectedMovementForm = ({
               />
             </div>
           </div>
+          <div className="form__errors">{errors}</div>
           <button className="btn btn-primary">Submit</button>
         </form>
       </Modal.Body>
