@@ -48,10 +48,11 @@ function ConnectedMovementListItem({
       <div className="movement__list-item--description-holder">
         <div className="movement__list-item--description">{description}</div>
         <div className="movement__list-item--coordinate">
-          Start: ({start[0]},{start[1]})
+          
+          Start: {start.cityName} ({start.coordinate[0]},{start.coordinate[1]})
         </div>
         <div className="movement__list-item--coordinate">
-          End: ({end[0]},{end[1]})
+          End: {end.cityName} ({end.coordinate[0]},{end.coordinate[1]})
         </div>
       </div>
       <div className="movement__list-item--button-holder">
@@ -70,7 +71,7 @@ function ConnectedMovementListItem({
         <div
           className="button-container p-2"
           onClick={() => {
-            toast("Movement deleted!")
+            toast("Movement deleted!");
             deleteMovement(id);
           }}
         >

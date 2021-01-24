@@ -11,18 +11,23 @@ export default combineReducers({
 
 export const initialState = {
   movements: [
-    { start: ["300", "400"], end: ["500", "500"], description: "first" },
-    { start: ["50", "50"], end: ["300", "300"], description: "2nd" },
-    { start: ["200", "100"], end: ["300", "300"], description: "4th" },
-    { start: ["500", "600"], end: ["700", "500"], description: "4th" },
-    { start: ["300", "800"], end: ["500", "700"], description: "4th" },
+    {
+      start: { coordinate: ["300", "400"], cityName: "Toronto" },
+      end: { coordinate: ["500", "500"], cityName: "Scarborough" },
+      description: "first",
+    },
+    {
+      start: { coordinate: ["100", "400"], cityName: "Chinatown" },
+      end: { coordinate: ["500", "500"], cityName: "X" },
+      description: "first",
+    },
   ],
 
   driverRoute: [],
   uiState: {
     openFormDialog: false,
     openEditDialog: false,
-    movementToEdit: { start: [0, 0], end: [0, 0], description: "" },
+    movementToEdit: { start: {coordinate:[0, 0], cityName:""}, end: {coordinate:[0, 0],cityName:""}, description: "" },
     sideView: true,
     mapView: true,
     activeMovement: null,

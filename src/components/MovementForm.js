@@ -42,12 +42,14 @@ const ConnectedMovementForm = ({
     const description = e.target["description"].value;
     const startLat = e.target["start-lat"].value;
     const startLon = e.target["start-lon"].value;
+    const startCity = e.target["start-city"].value;
     const endLat = e.target["end-lat"].value;
     const endLon = e.target["end-lon"].value;
+    const endCity = e.target["end-city"].value;
 
     const movement = {
-      start: [startLat, startLon],
-      end: [endLat, endLon],
+      start: { coordinate: [startLat, startLon], cityName: startCity },
+      end: { coordinate: [endLat, endLon], cityName: endCity },
       description,
     };
     if (checkValidMovement(movements, movement) === true) {
@@ -98,7 +100,6 @@ const ConnectedMovementForm = ({
             </div>
             <div className="col">
               <label htmlFor="start-lon">Longitude</label>
-
               <input
                 required
                 name="start-lon"
@@ -107,6 +108,18 @@ const ConnectedMovementForm = ({
                 placeholder={LONGITUDE_PLACEHOLDER_TEXT}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}
+                className="form-control"
+              />
+            </div>
+
+            <div className="col">
+              <label htmlFor="start-city">City</label>
+              <input
+                required
+                name="start-city"
+                id="start-city"
+                type="text"
+                placeholder="City Name"
                 className="form-control"
               />
             </div>
@@ -138,6 +151,17 @@ const ConnectedMovementForm = ({
                 placeholder={LONGITUDE_PLACEHOLDER_TEXT}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}
+                className="form-control"
+              />
+            </div>
+            <div className="col">
+              <label htmlFor="end-city">City</label>
+              <input
+                required
+                name="end-city"
+                id="end-city"
+                type="text"
+                placeholder="City Name"
                 className="form-control"
               />
             </div>

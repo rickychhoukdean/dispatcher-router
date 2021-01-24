@@ -17,26 +17,26 @@ function generateMovementsOnMap(canvas, movements, uiState) {
     context.strokeStyle = MAP_LINE_COLOR;
     context.fillText(
       movement.description,
-      movement.start[0],
-      movement.start[1]
+      movement.start.coordinate[0],
+      movement.start.coordinate[1]
     );
-    context.moveTo(movement.start[0], movement.start[1]);
-    context.lineTo(movement.end[0], movement.end[1]);
+    context.moveTo(movement.start.coordinate[0], movement.start.coordinate[1]);
+    context.lineTo(movement.end.coordinate[0], movement.end.coordinate[1]);
     context.lineWidth = LINE_WIDTH;
     context.stroke();
 
     context.beginPath();
     context.fillStyle = MAP_LINE_COLOR;
     context.arc(
-      movement.start[0],
-      movement.start[1],
+      movement.start.coordinate[0],
+      movement.start.coordinate[1],
       CIRCLE_RADIUS,
       0,
       2 * Math.PI
     );
     context.arc(
-      movement.end[0],
-      movement.end[1],
+      movement.end.coordinate[0],
+      movement.end.coordinate[1],
       CIRCLE_RADIUS,
       0,
       2 * Math.PI
@@ -46,8 +46,8 @@ function generateMovementsOnMap(canvas, movements, uiState) {
     if (uiState.activeMovement === idx) {
       context.beginPath();
       context.strokeStyle = MAP_HIGHLIGHT_COLOR;
-      context.moveTo(movement.start[0], movement.start[1]);
-      context.lineTo(movement.end[0], movement.end[1]);
+      context.moveTo(movement.start.coordinate[0], movement.start.coordinate[1]);
+      context.lineTo(movement.end.coordinate[0], movement.end.coordinate[1]);
       context.lineWidth = SELECTED_LINE_WIDTH;
       context.stroke();
     }

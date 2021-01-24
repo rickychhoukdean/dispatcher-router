@@ -79,8 +79,8 @@ function parseMovementsIntoArray(movements) {
 
   movements.forEach((movement) => {
     convertedArray.push([
-      Object.values(movement)[0],
-      Object.values(movement)[1],
+      Object.values(movement)[0].coordinate,
+      Object.values(movement)[1].coordinate,
     ]);
   });
   return convertedArray;
@@ -121,11 +121,11 @@ function checkValidMovement(movements, newMovement) {
   if (duplicateObjectInArray(movements, newMovement)) {
     return "Error: This movement already exists, please change parameters!";
   }
-
-  if (compareArray(newMovement["start"], newMovement["end"])) {
+  if (
+    compareArray(newMovement["start"].coordinate, newMovement["end"].coordinate)
+  ) {
     return "Error: Start and end points cannot be the same";
   }
-
   return true;
 }
 function compareArray(a, b) {
@@ -138,7 +138,11 @@ function compareObjects(obj1, obj2) {
 
 function duplicateObjectInArray(array, obj) {
   for (let item of array) {
-    if (compareObjects(item, obj)) {
+    if (
+      compareObjects(item.start.coordinate, obj.start.coordinate) &&
+      compareObjects(item.end.coordinate, obj.end.coordinate) &&
+      obj.description === item.description
+    ) {
       return true;
     }
   }
