@@ -27,8 +27,20 @@ function generateMovementsOnMap(canvas, movements, uiState) {
 
     context.beginPath();
     context.fillStyle = MAP_LINE_COLOR;
-    context.arc(movement.start[0], movement.start[1], CIRCLE_RADIUS, 0, 2 * Math.PI);
-    context.arc(movement.end[0], movement.end[1], CIRCLE_RADIUS, 0, 2 * Math.PI);
+    context.arc(
+      movement.start[0],
+      movement.start[1],
+      CIRCLE_RADIUS,
+      0,
+      2 * Math.PI
+    );
+    context.arc(
+      movement.end[0],
+      movement.end[1],
+      CIRCLE_RADIUS,
+      0,
+      2 * Math.PI
+    );
     context.fill();
 
     if (uiState.activeMovement === idx) {
@@ -53,19 +65,24 @@ function generateRoutesOnMap(driverRoute, canvas) {
       context.lineTo(driverRoute[i + 1][0], driverRoute[i + 1][1]);
       context.lineWidth = LINE_WIDTH;
       context.stroke();
-      context.strokeStyle = getRandomColor();
-    } 
-    else {
+      context.strokeStyle = MAP_LINE_COLOR;
+    } else {
       context.beginPath();
       context.moveTo(driverRoute[i - 1][0], driverRoute[i - 1][1]);
       context.lineTo(driverRoute[i][0], driverRoute[i][1]);
       context.lineWidth = LINE_WIDTH;
       context.stroke();
-      context.strokeStyle = getRandomColor();
+      context.strokeStyle = MAP_LINE_COLOR;
     }
 
     context.beginPath();
-    context.arc(driverRoute[i][0], driverRoute[i][1], CIRCLE_RADIUS, 0, 2 * Math.PI);
+    context.arc(
+      driverRoute[i][0],
+      driverRoute[i][1],
+      CIRCLE_RADIUS,
+      0,
+      2 * Math.PI
+    );
     context.fill();
 
     context.font = MAP_FONT;
@@ -75,15 +92,6 @@ function generateRoutesOnMap(driverRoute, canvas) {
       driverRoute[i][1]
     );
   }
-}
-
-function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
 }
 
 function fitToContainer(canvas) {

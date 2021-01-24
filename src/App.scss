@@ -17,24 +17,29 @@
     min-height: 1000px;
     width: 100%;
   }
+
   &__list-item {
     border-bottom: 3px solid #e6e6e6;
     padding-bottom: 0 14px;
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
+
     &--description {
       font-size: 1.25rem;
       word-wrap: break-word;
     }
+
     &--coordinate {
       font-size: 1rem;
       color: gray
     }
+
     &--button-holder {
       display: flex;
       align-items: center;
     }
+
     &:hover {
       background-color: #f7f7f8;
     }
@@ -45,10 +50,12 @@
 
 .route {
   word-wrap: break-word;
+
   &__item {
     border-bottom: 3px solid #e6e6e6;
     padding: 14px 0;
     font-size: 1rem;
+
     &:hover {
       background-color: #f7f7f8;
     }
@@ -60,6 +67,7 @@
   &__section {
     border-bottom: grey 1px solid;
   }
+
   &__errors {
     color: red;
     padding: 1rem 0;
@@ -71,6 +79,7 @@
     color: #0275d8 !important;
     border-color: #0275d8 !important;
     border-radius: 50% !important;
+
     &:hover {
       background-color: #f1f3f4;
 
@@ -87,4 +96,13 @@
 .row {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .movement {
+    &__list {
+      min-height: 0px;
+    }
+  }
 }

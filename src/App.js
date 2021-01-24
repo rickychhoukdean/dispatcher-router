@@ -35,10 +35,10 @@ function ConnectedApp({ uiState }) {
         />
       </div>
       <div className="row">
-        <div className="sidebar col-sm-3">
+        <div className="sidebar col-md-3">
           {uiState.sideView ? <MovementList /> : <RouteList />}
         </div>
-        <div className="map__container col-sm-9">
+        <div className="map__container col-md-9">
           {uiState.mapView ? <MovementMapView /> : <RouteMapView />}
         </div>
         <EditMovementForm />

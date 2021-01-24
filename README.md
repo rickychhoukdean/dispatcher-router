@@ -1,30 +1,33 @@
 # Dispatcher Router
 
-React Redux application used for dispatchers to create, read, update and delete movements and view possible routes emintatingfrom these movements.
+React Redux SPA for dispatchers to create, update and delete shipments and view optimized driving routes for these shipments.
 
-Read more about features [here](./FEATURES.md)
+## Basic Features    
+1. Dispatchers are able to create movements. Each movement will have a start (lat,long), end and description.
+2. Dispatchers are able to update movements. 
+3. Movements will be checked for validity (does not already exist and start and end points are different) upon creation and updating.
+4. Dispatchers are able to delete movements.
+5. Dispatchers be shown a list of all available movements or the optimized route to take for these movements in the sidebar. 
+6. The dispactchers will be shown a map of all avaialble movements or the optimized route depending on the current view.
+7. The dispatcher is able to make a clear distinction between the list of movements and their representation on the map either by looking at the label on the map or hovering inside the list item.
 
-# Basic Features    
-1. Dispatchers are able to create, update and delete movements. Movements will be checked for validity (does not already exist and start and end points are different) upon creation and updating.
-2. Dispatcher is able to toggle between different views. 
-    The sidebar will either show a list of all available movements or the optimized routes to do these movements. 
-        Hovering over movements in the list will highlight them on the movement map.
-    The map can be toggled between a view of all movements or the optimized route.
-3.
+Read about additional features [here](./FEATURES.md)
 
-# Demo
+## Demo
 
-# Setup Guide
+
+
+## Setup Guide
 
 1. `git clone https://github.com/rickychhoukdean/dispatcher-router.git`
 2. `cd`
 3. `npm i`
 4. `npm run start`
-5. The website should be now running on http://localhost:3000/ or whichever port is open
-6. You can also view the deployed application at https://dispatcher-router.netlify.app
+5. The website should be now running on http://localhost:3000/
+6. You can also view the deployed application at https://dispatcher-router.netlify.app/
 
 
-# Dependencies
+## Dependencies
 
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
