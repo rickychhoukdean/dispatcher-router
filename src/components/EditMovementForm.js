@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { editMovement, closeEditForm } from "../actions";
 import { checkValidMovement } from "../helpers";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-toastify";
 import {
   MAX_LATITUDE,
   MAX_LONGITUDE,
@@ -50,6 +51,7 @@ const ConnectedEditMovementForm = ({
     };
     if (checkValidMovement(movements, movement) === true) {
       editMovement(uiState.movementToEdit.id, movement);
+      toast("Movement Updated!");
       setErrors(null);
       closeEditForm();
     } else {

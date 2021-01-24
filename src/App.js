@@ -7,6 +7,9 @@ import EditMovementForm from "./components/EditMovementForm";
 import MovementForm from "./components/MovementForm";
 import RouteList from "./components/RouteList";
 import RouteMapView from "./components/RouteMapView";
+import { ToastContainer,Slide } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const mapStateToProps = (state) => {
   return {
@@ -18,6 +21,19 @@ function ConnectedApp({ uiState }) {
   return (
     <div className="app">
       <Navbar />
+      <div>
+        <ToastContainer
+          position="top-center"
+          autoClose={1500}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          transition={Slide}
+        />
+      </div>
       <div className="row">
         <div className="sidebar col-sm-3">
           {uiState.sideView ? <MovementList /> : <RouteList />}

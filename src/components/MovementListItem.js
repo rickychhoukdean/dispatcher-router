@@ -6,6 +6,7 @@ import {
   selectActiveMovement,
   deselectActiveMovement,
 } from "../actions";
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -69,6 +70,7 @@ function ConnectedMovementListItem({
         <div
           className="button-container p-2"
           onClick={() => {
+            toast("Movement deleted!")
             deleteMovement(id);
           }}
         >

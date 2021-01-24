@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createMovement, closeForm } from "../actions";
 import { checkValidMovement } from "../helpers";
+import { toast } from "react-toastify";
+
 import Modal from "react-bootstrap/Modal";
 import {
   MAX_LATITUDE,
@@ -50,6 +52,7 @@ const ConnectedMovementForm = ({
     };
     if (checkValidMovement(movements, movement) === true) {
       createMovement(movement);
+      toast("Movement Created!");
       setErrors(null);
       closeForm();
     } else {
