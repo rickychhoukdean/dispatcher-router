@@ -14,12 +14,12 @@ export const initialState = {
     {
       start: { coordinate: ["300", "400"], cityName: "Toronto" },
       end: { coordinate: ["500", "500"], cityName: "Scarborough" },
-      description: "first",
+      description: "Playstation 5",
     },
     {
-      start: { coordinate: ["100", "400"], cityName: "Chinatown" },
-      end: { coordinate: ["500", "500"], cityName: "X" },
-      description: "first",
+      start: { coordinate: ["100", "400"], cityName: "Vancouver" },
+      end: { coordinate: ["500", "500"], cityName: "Richmond Hill" },
+      description: "Best buy",
     },
   ],
 

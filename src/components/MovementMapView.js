@@ -18,8 +18,10 @@ function ConnectedMovementMapView({ movements, uiState }) {
 
   return (
     <div>
-      <h4>Movement Map</h4>
+      <h4 className="section-header">Movement Map</h4>
+      <div className="map__scroll">
       <canvas className="map" ref={ref} />
+      </div>
     </div>
   );
 }

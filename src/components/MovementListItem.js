@@ -46,9 +46,8 @@ function ConnectedMovementListItem({
       }}
     >
       <div className="movement__list-item--description-holder">
-        <div className="movement__list-item--description">{description}</div>
+        <div className="movement__list-item--coordinate">{description}</div>
         <div className="movement__list-item--coordinate">
-          
           Start: {start.cityName} ({start.coordinate[0]},{start.coordinate[1]})
         </div>
         <div className="movement__list-item--coordinate">

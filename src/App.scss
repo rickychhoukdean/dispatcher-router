@@ -2,11 +2,15 @@
   background-color: #f1f3f4;
   height: 1000px;
   width: 1000px;
-  overflow: scroll;
 
   &__container {
     max-height: 100vh;
     max-width: 100%;
+  }
+
+  &__scroll {
+    max-height: 1000px;
+    max-width: 1000px;
   }
 }
 
@@ -81,8 +85,7 @@
     border-radius: 50% !important;
 
     &:hover {
-      background-color: #f1f3f4;
-
+      background-color: #B9BBBC;
     }
   }
 }
@@ -105,4 +108,14 @@
       min-height: 0px;
     }
   }
+}
+
+.navbar-header {
+  color: white;
+  // padding: .25rem;
+
+}
+
+.section-header {
+  text-decoration: underline
 }
