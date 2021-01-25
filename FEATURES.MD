@@ -2,23 +2,23 @@
 
 ## Testing and Continuous Integration
 1. There are unit tests for the helper functions you can check via `npm run test`. It is using React Testing Library.
-2. I've set up th app with CircleCI and Netlify. I've always wanted to learn more about continuous integration and thought this was the perfect chance to ensure the app was deployed only when my tasks passsed and gave me confidence when making additinal changes.
+2. I've set up the app with CircleCI and Netlify. I've always wanted to learn more about continuous integration and thought this was the perfect chance to ensure the app was deployed only when my tasks passed and gave me confidence when making additional changes.
+
+## Expanding Movement Model with cities
+The dispatcher is also able to add cities to the movements when creating and updating. These cities do not affect validation.
 
 ## Route Optimization
-The route is created it will always have the least total distance. 
+The route created will always have the least total distance. 
 
-The algorithm works by breaking down the problem to "which available point is the closest". The general idea is we will have an array of unvisted locations (first starting with all beginning points
+The algorithm works by breaking down the problem to "which available point is the closest". The general idea is to work with two arrays, one visited nodes array and one unvisited nodes array.
 
-1. given an array of movements and a given starting point we will find the next closest point (by eudcludian distance) to it by iterating through each available point. 
-2. If the closest available point is a starting point the add that point to the route and replace that starting point with the end point. If the closest avaialble point is an end point remove it from the array. 
-3. We continue this process until there are no more availabe points.
+1. given an array of movements (unvisited node array with only starting points) and a given starting point we will find the next closest point (by euclidian distance) to it by iterating through each unvisited node. 
+2. If the closest available node is a starting point then add that point to the visited nodes array and replace that starting point with its endpoint. If the closest available point is an endpoint add it to the visited nodes array and remove it from the unvisited nodes array. 
+3. Continue this process until there are no more available points and return the visited nodes array.
 
-We will do this processs for each starting point and then return the route with the smallest distance.
+We will do this process for each starting point and then return the route with the smallest distance.
 
-With this method it is also possibe to find the shortest possible distance given a certain starting point but it is currently not implemented in the app.
-
-## Route Update Timing
-The route will be updated as soon as the available movements are changed (either created, updated or deleted).
+With this method, it is also possible to find the shortest possible distance given a certain starting point but it is currently not implemented in the app.
 
 ## Deployment
 The website is deployed at https://dispatcher-router.netlify.app/
