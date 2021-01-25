@@ -16,9 +16,14 @@ function generateMovementsOnMap(canvas, movements, uiState) {
     context.font = MAP_FONT;
     context.strokeStyle = MAP_LINE_COLOR;
     context.fillText(
-      movement.description,
+      movement.start.cityName,
       movement.start.coordinate[0],
       movement.start.coordinate[1]
+    );
+    context.fillText(
+      movement.end.cityName,
+      movement.end.coordinate[0],
+      movement.end.coordinate[1]
     );
     context.moveTo(movement.start.coordinate[0], movement.start.coordinate[1]);
     context.lineTo(movement.end.coordinate[0], movement.end.coordinate[1]);

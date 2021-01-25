@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createMovement, closeForm } from "../actions";
-import { checkValidMovement } from "../helpers";
+import { checkValidMovement } from "../helpers/validationHelpers";
 import { toast } from "react-toastify";
 
 import Modal from "react-bootstrap/Modal";

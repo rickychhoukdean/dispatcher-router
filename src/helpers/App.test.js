@@ -1,4 +1,5 @@
-import { generateBestRoute, checkValidMovement } from "./helpers";
+import { generateBestRoute } from "./routeHelpers";
+import { checkValidMovement } from "./validationHelpers";
 
 describe("generateBestRoute", () => {
   test("Return an emptry array when given array is empty", () => {
@@ -7,7 +8,7 @@ describe("generateBestRoute", () => {
     expect(generateBestRoute(movements)).toStrictEqual(wantedResult);
   });
   test("Return basic array if there is one movement", () => {
-      const movements = [
+    const movements = [
       {
         start: { coordinate: [3, 4], cityName: "Toronto" },
         end: { coordinate: [5, 5], cityName: "Paris" },

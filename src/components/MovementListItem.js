@@ -46,12 +46,14 @@ function ConnectedMovementListItem({
       }}
     >
       <div className="movement__list-item--description-holder">
-        <div className="movement__list-item--coordinate">{description}</div>
+      <div className="movement__list-item--header">Movement {id + 1}</div>
+
+        <div className="movement__list-item--coordinate"><b>Description:</b> {description}</div>
         <div className="movement__list-item--coordinate">
-          Start: {start.cityName} ({start.coordinate[0]},{start.coordinate[1]})
+          <b>Start:</b> {start.cityName} ({start.coordinate[0]},{start.coordinate[1]})
         </div>
         <div className="movement__list-item--coordinate">
-          End: {end.cityName} ({end.coordinate[0]},{end.coordinate[1]})
+          <b>End:</b> {end.cityName} ({end.coordinate[0]},{end.coordinate[1]})
         </div>
       </div>
       <div className="movement__list-item--button-holder">

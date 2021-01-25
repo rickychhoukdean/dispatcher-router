@@ -3,9 +3,9 @@
 React Redux SPA for dispatchers to create, update and delete shipments and view optimized driving routes for these shipments.
 
 ## Basic Features    
-1. Dispatchers are able to create movements. Each movement will have a start (lat,long), end and description.
+1. Dispatchers are able to create movements. Each movement will have a start,end, city name and description.
 2. Dispatchers are able to update movements. 
-3. Movements will be checked for validity (does not already exist and start and end points are different) upon creation and updating.
+3. Movements will be validated (does not already exist and start and end points are different) upon creation and updating. City names do not effect validation.
 4. Dispatchers are able to delete movements.
 5. Dispatchers be shown a list of all available movements or the optimized route to take for these movements in the sidebar. 
 6. The dispactchers will be shown a map of all avaialble movements or the optimized route depending on the current view.
@@ -26,6 +26,10 @@ Read about additional features [here](./FEATURES.md)
 5. The website should be now running on http://localhost:3000/
 6. You can also view the deployed application at https://dispatcher-router.netlify.app/
 
+## Things to note
+    - I've left some sample movements in the initial state of the app. Please feel free to remove from the movements array in the reducers/index.js
+    - Lat and longs are to be between 0-1000 due to use of HTML canvas
+    - The optimized route structured such that we can swap over from HTML canvas to something like [leaftlet.js polyline](http://www.d3noob.org/2014/01/adding-line-to-leafletjs-map.html) easily.
 
 ## Dependencies
 

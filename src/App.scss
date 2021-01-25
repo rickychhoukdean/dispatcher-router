@@ -29,14 +29,15 @@
     justify-content: space-between;
     padding: 1rem 0;
 
-    &--description {
+    &--header {
       font-size: 1.25rem;
       word-wrap: break-word;
+      font-weight: bold;
     }
 
-    &--coordinate {
+    &--section {
       font-size: 1rem;
-      color: gray
+      color: black
     }
 
     &--button-holder {
@@ -117,5 +118,6 @@
 }
 
 .section-header {
+  font-weight: bold;
   text-decoration: underline
 }

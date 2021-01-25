@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import MovementListItem from "./MovementListItem";
 import { createRoute } from "../actions";
-import { generateBestRoute } from "../helpers";
+import { generateBestRoute } from "../helpers/routeHelpers";
 
 const mapStateToProps = (state) => {
   return {

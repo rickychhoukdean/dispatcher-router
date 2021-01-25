@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { editMovement, closeEditForm } from "../actions";
-import { checkValidMovement } from "../helpers";
+import { checkValidMovementUpdate } from "../helpers/validationHelpers";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import {
@@ -51,13 +51,13 @@ const ConnectedEditMovementForm = ({
       end: { coordinate: [endLat, endLon], cityName: endCity },
       description,
     };
-    if (checkValidMovement(movements, movement) === true) {
+    if (checkValidMovementUpdate(movements, movement, uiState.movementToEdit) === true) {
       editMovement(uiState.movementToEdit.id, movement);
       toast("Movement Updated!");
       setErrors(null);
       closeEditForm();
     } else {
-      setErrors(checkValidMovement(movements, movement));
+      setErrors(checkValidMovementUpdate(movements, movement,uiState.movementToEdit));
     }
   };
 

@@ -13,13 +13,23 @@ export const initialState = {
   movements: [
     {
       start: { coordinate: ["300", "400"], cityName: "Toronto" },
-      end: { coordinate: ["500", "500"], cityName: "Scarborough" },
+      end: { coordinate: ["800", "800"], cityName: "Scarborough" },
       description: "Playstation 5",
     },
     {
       start: { coordinate: ["100", "400"], cityName: "Vancouver" },
       end: { coordinate: ["500", "500"], cityName: "Richmond Hill" },
       description: "Best buy",
+    },
+    {
+      start: { coordinate: ["600", "400"], cityName: "Burlington" },
+      end: { coordinate: ["200", "750"], cityName: "Downtown" },
+      description: "RR",
+    },
+    {
+      start: { coordinate: ["100", "100"], cityName: "Ajax" },
+      end: { coordinate: ["900", "100"], cityName: "Downtown" },
+      description: "Test",
     },
   ],
 
