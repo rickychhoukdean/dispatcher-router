@@ -12,7 +12,7 @@ React Redux SPA for dispatchers to create, update and delete movements and view 
 6. Dispatchers will be shown a map of all available movements or the optimized route depending on the view.
 7. Dispatchers can make a clear distinction between the list of movements and their representation on the map either by looking at the label on the map or hovering the movement list item.
 
-Read about additional features [here](./FEATURES.md)
+Read about additional features [here](./FEATURES.MD)
 
 ## Demo
 
