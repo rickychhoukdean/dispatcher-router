@@ -21,11 +21,8 @@ function ConnectedRouteMapView({ driverRoute, uiState }) {
   }, [driverRoute, uiState]);
 
   return (
-    <div>
-      <h4 className="section-header">Route Map</h4>
-      <div className="map__scroll">
-        <canvas className="map" ref={ref} />
-      </div>
+    <div className="map__scroll">
+      <canvas className="map" ref={ref} />
     </div>
   );
 }
