@@ -28,9 +28,8 @@ Read about additional features [here](./FEATURES.MD)
 6. You can also view the deployed application at https://dispatcher-router.netlify.app/
 
 ## Things to note
-
-    - I've left some sample movements in the initial state of the app. Please feel free to remove from the movements array in the reducers/index.js
-    - Lat and longs are to be between 0-1000 due to the use of HTML canvas
+  - I've left some sample movements in the initial state of the app. Please feel free to remove from the movements array in the reducers/index.js
+  - Lat and longs are to be between 0-1000 due to the use of HTML canvas
 
 ## Dependencies
 
