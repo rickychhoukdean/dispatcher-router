@@ -23,7 +23,7 @@
   }
 
   &__list-item {
-    padding-bottom: 3px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
@@ -101,7 +101,7 @@
   margin-right: auto !important;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
 
   .movement {
     &__list {
@@ -112,8 +112,6 @@
 
 .navbar-header {
   color: white;
-  // padding: .25rem;
-
 }
 
 .section-header {
