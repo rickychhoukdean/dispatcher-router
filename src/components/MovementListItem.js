@@ -9,6 +9,7 @@ import {
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { COLORS_ARRAY } from "../constants/map";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -37,6 +38,7 @@ function ConnectedMovementListItem({
 
   return (
     <div
+      style={{ border: `${COLORS_ARRAY[id]} 3px solid` }}
       className="movement__list-item"
       onMouseOver={() => {
         selectActiveMovement(id);
@@ -46,11 +48,14 @@ function ConnectedMovementListItem({
       }}
     >
       <div className="movement__list-item--description-holder">
-      <div className="movement__list-item--header">Movement {id + 1}</div>
+        <div className="movement__list-item--header">Movement {id + 1}</div>
 
-        <div className="movement__list-item--coordinate"><b>Description:</b> {description}</div>
         <div className="movement__list-item--coordinate">
-          <b>Start:</b> {start.cityName} ({start.coordinate[0]},{start.coordinate[1]})
+          <b>Description:</b> {description}
+        </div>
+        <div className="movement__list-item--coordinate">
+          <b>Start:</b> {start.cityName} ({start.coordinate[0]},
+          {start.coordinate[1]})
         </div>
         <div className="movement__list-item--coordinate">
           <b>End:</b> {end.cityName} ({end.coordinate[0]},{end.coordinate[1]})

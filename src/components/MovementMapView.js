@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { generateMovementsOnMap } from "../helpers/mapHelpers";
+import {
+  generateMovementsOnMap,
+  generateLabelsOnMovement,
+} from "../helpers/mapHelpers";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,13 +17,14 @@ function ConnectedMovementMapView({ movements, uiState }) {
   useEffect(() => {
     const canvas = ref.current;
     generateMovementsOnMap(canvas, movements, uiState);
+    generateLabelsOnMovement(canvas, movements);
   }, [movements, uiState]);
 
   return (
     <div>
       <h4 className="section-header">Movement Map</h4>
       <div className="map__scroll">
-      <canvas className="map" ref={ref} />
+        <canvas className="map" ref={ref} />
       </div>
     </div>
   );

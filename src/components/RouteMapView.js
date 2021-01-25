@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { generateRoutesOnMap } from "../helpers/mapHelpers";
+import {
+  generateRoutesOnMap,
+  generateLabelsOnRoute,
+} from "../helpers/mapHelpers";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,6 +17,7 @@ function ConnectedRouteMapView({ driverRoute }) {
     let canvas = ref.current;
 
     generateRoutesOnMap(driverRoute, canvas);
+    generateLabelsOnRoute(driverRoute, canvas);
   }, [driverRoute]);
 
   return (
