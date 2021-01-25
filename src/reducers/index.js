@@ -11,18 +11,33 @@ export default combineReducers({
 
 export const initialState = {
   movements: [
-    { start: ["300", "400"], end: ["500", "500"], description: "first" },
-    { start: ["50", "50"], end: ["300", "300"], description: "2nd" },
-    { start: ["200", "100"], end: ["300", "300"], description: "4th" },
-    { start: ["500", "600"], end: ["700", "500"], description: "4th" },
-    { start: ["300", "800"], end: ["500", "700"], description: "4th" },
-
+    {
+      start: { coordinate: ["300", "400"], cityName: "Toronto" },
+      end: { coordinate: ["800", "800"], cityName: "Scarborough" },
+      description: "Playstation 5",
+    },
+    {
+      start: { coordinate: ["100", "400"], cityName: "Vancouver" },
+      end: { coordinate: ["500", "500"], cityName: "Richmond Hill" },
+      description: "Best buy",
+    },
+    {
+      start: { coordinate: ["600", "400"], cityName: "Burlington" },
+      end: { coordinate: ["200", "750"], cityName: "Downtown" },
+      description: "RR",
+    },
+    {
+      start: { coordinate: ["100", "100"], cityName: "Ajax" },
+      end: { coordinate: ["900", "100"], cityName: "Downtown" },
+      description: "Test",
+    },
   ],
+
   driverRoute: [],
   uiState: {
     openFormDialog: false,
     openEditDialog: false,
-    movementToEdit: { start: [0, 0], end: [0, 0], description: "" },
+    movementToEdit: { start: {coordinate:[0, 0], cityName:""}, end: {coordinate:[0, 0],cityName:""}, description: "" },
     sideView: true,
     mapView: true,
     activeMovement: null,

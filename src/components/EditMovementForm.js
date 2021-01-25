@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { editMovement, closeEditForm } from "../actions";
-import { checkValidMovement } from "../helpers";
+import { checkValidMovementUpdate } from "../helpers/validationHelpers";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import {
@@ -41,21 +41,23 @@ const ConnectedEditMovementForm = ({
     const description = e.target["description"].value;
     const startLat = e.target["start-lat"].value;
     const startLon = e.target["start-lon"].value;
+    const startCity = e.target["start-city"].value;
     const endLat = e.target["end-lat"].value;
     const endLon = e.target["end-lon"].value;
+    const endCity = e.target["end-city"].value;
 
     const movement = {
-      start: [startLat, startLon],
-      end: [endLat, endLon],
+      start: { coordinate: [startLat, startLon], cityName: startCity },
+      end: { coordinate: [endLat, endLon], cityName: endCity },
       description,
     };
-    if (checkValidMovement(movements, movement) === true) {
+    if (checkValidMovementUpdate(movements, movement, uiState.movementToEdit) === true) {
       editMovement(uiState.movementToEdit.id, movement);
       toast("Movement Updated!");
       setErrors(null);
       closeEditForm();
     } else {
-      setErrors(checkValidMovement(movements, movement));
+      setErrors(checkValidMovementUpdate(movements, movement,uiState.movementToEdit));
     }
   };
 
@@ -96,7 +98,7 @@ const ConnectedEditMovementForm = ({
                 id="start-lat"
                 type="Number"
                 placeholder={LATITUDE_PLACEHOLDER_TEXT}
-                defaultValue={uiState.movementToEdit.start[0]}
+                defaultValue={uiState.movementToEdit.start.coordinate[0]}
                 min={MIN_LATITUDE}
                 max={MAX_LATITUDE}
                 className="form-control"
@@ -111,9 +113,21 @@ const ConnectedEditMovementForm = ({
                 id="start-lon"
                 type="Number"
                 placeholder={LONGITUDE_PLACEHOLDER_TEXT}
-                defaultValue={uiState.movementToEdit.start[1]}
+                defaultValue={uiState.movementToEdit.start.coordinate[1]}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}
+                className="form-control"
+              />
+            </div>
+            <div className="col">
+              <label htmlFor="start-city">City</label>
+              <input
+                required
+                name="start-city"
+                id="start-city"
+                type="text"
+                defaultValue={uiState.movementToEdit.start.cityName}
+                placeholder="City Name"
                 className="form-control"
               />
             </div>
@@ -129,7 +143,7 @@ const ConnectedEditMovementForm = ({
                 id="end-lat"
                 type="Number"
                 placeholder={LATITUDE_PLACEHOLDER_TEXT}
-                defaultValue={uiState.movementToEdit.end[0]}
+                defaultValue={uiState.movementToEdit.end.coordinate[0]}
                 min={MIN_LATITUDE}
                 max={MAX_LATITUDE}
                 className="form-control"
@@ -137,16 +151,28 @@ const ConnectedEditMovementForm = ({
             </div>
             <div className="col">
               <label htmlFor="end-long">Longitude</label>
-
               <input
                 required
                 name="end-lon"
                 id="end-lon"
                 type="Number"
                 placeholder={LONGITUDE_PLACEHOLDER_TEXT}
-                defaultValue={uiState.movementToEdit.end[1]}
+                defaultValue={uiState.movementToEdit.end.coordinate[1]}
                 min={MIN_LONGITUDE}
                 max={MAX_LONGITUDE}
+                className="form-control"
+              />
+            </div>
+            <div className="col">
+              <label htmlFor="end-city">City</label>
+              <input
+                required
+                name="end-city"
+                id="end-city"
+                type="text"
+                defaultValue={uiState.movementToEdit.end.cityName}
+
+                placeholder="City Name"
                 className="form-control"
               />
             </div>

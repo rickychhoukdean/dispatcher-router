@@ -2,11 +2,15 @@
   background-color: #f1f3f4;
   height: 1000px;
   width: 1000px;
-  overflow: scroll;
 
   &__container {
     max-height: 100vh;
     max-width: 100%;
+  }
+
+  &__scroll {
+    max-height: 1000px;
+    max-width: 1000px;
   }
 }
 
@@ -17,24 +21,29 @@
     min-height: 1000px;
     width: 100%;
   }
+
   &__list-item {
-    border-bottom: 3px solid #e6e6e6;
-    padding-bottom: 0 14px;
+    padding-bottom: 3px;
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
-    &--description {
+
+    &--header {
       font-size: 1.25rem;
       word-wrap: break-word;
+      font-weight: bold;
     }
-    &--coordinate {
+
+    &--section {
       font-size: 1rem;
-      color: gray
+      color: black
     }
+
     &--button-holder {
       display: flex;
       align-items: center;
     }
+
     &:hover {
       background-color: #f7f7f8;
     }
@@ -45,10 +54,12 @@
 
 .route {
   word-wrap: break-word;
+
   &__item {
     border-bottom: 3px solid #e6e6e6;
     padding: 14px 0;
     font-size: 1rem;
+
     &:hover {
       background-color: #f7f7f8;
     }
@@ -60,6 +71,7 @@
   &__section {
     border-bottom: grey 1px solid;
   }
+
   &__errors {
     color: red;
     padding: 1rem 0;
@@ -71,9 +83,9 @@
     color: #0275d8 !important;
     border-color: #0275d8 !important;
     border-radius: 50% !important;
-    &:hover {
-      background-color: #f1f3f4;
 
+    &:hover {
+      background-color: #B9BBBC;
     }
   }
 }
@@ -87,4 +99,24 @@
 .row {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .movement {
+    &__list {
+      min-height: 0px;
+    }
+  }
+}
+
+.navbar-header {
+  color: white;
+  // padding: .25rem;
+
+}
+
+.section-header {
+  font-weight: bold;
+  text-decoration: underline
 }
