@@ -5,11 +5,11 @@ React Redux SPA for dispatchers to create, update and delete shipments and view 
 ## Basic Features    
 1. Dispatchers are able to create movements. Each movement will have a start,end, city name and description.
 2. Dispatchers are able to update movements. 
-3. Movements will be validated (does not already exist and start and end points are different) upon creation and updating. City names do not effect validation.
+3. Movements will be validated (does not already exist and start and end points are different) upon creating and updating. City names do not affect validation.
 4. Dispatchers are able to delete movements.
 5. Dispatchers be shown a list of all available movements or the optimized route to take for these movements in the sidebar. 
-6. The dispactchers will be shown a map of all avaialble movements or the optimized route depending on the current view.
-7. The dispatcher is able to make a clear distinction between the list of movements and their representation on the map either by looking at the label on the map or hovering inside the list item.
+6. Dispactchers will be shown a map of all avaialble movements or the optimized route depending on the view.
+7. Dispatcher is able to make a clear distinction between the list of movements and their representation on the map either by looking at the label on the map or hovering inside the list item.
 
 Read about additional features [here](./FEATURES.md)
 

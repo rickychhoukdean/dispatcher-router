@@ -35,11 +35,12 @@ function ConnectedMovementList({ createRoute, movements }) {
       );
     });
   } else {
-    movementList = <div>Please add a movement for the driver at the top right!</div>;
+    movementList = (
+      <div>Please add a movement for the driver at the top right!</div>
+    );
   }
   return (
     <div>
-      <h4 className="section-header">Movement List</h4>
       <div className="movement__list">{movementList}</div>
     </div>
   );

@@ -17,19 +17,6 @@ function ConnectedNavBar({ changeMapView, changeSideView, openForm }) {
       <div className="navbar-collapse justify-content-end" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item p-1">
-            <button
-              className="btn btn-primary"
-              onClick={changeSideView}
-            >
-              Toggle List View
-            </button>
-          </li>
-          <li className="nav-item p-1">
-            <button className="btn btn-primary" onClick={changeMapView}>
-              Toggle Map View
-            </button>
-          </li>
-          <li className="nav-item p-1">
             <button className="btn btn-success" onClick={openForm}>
               Add New Movement
             </button>

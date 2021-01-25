@@ -8,17 +8,17 @@ import {
 const mapStateToProps = (state) => {
   return {
     driverRoute: state.driverRoute,
+    uiState: state.uiState,
   };
 };
 
-function ConnectedRouteMapView({ driverRoute }) {
+function ConnectedRouteMapView({ driverRoute, uiState }) {
   let ref = useRef();
   useEffect(() => {
     let canvas = ref.current;
-
     generateRoutesOnMap(driverRoute, canvas);
     generateLabelsOnRoute(driverRoute, canvas);
-  }, [driverRoute]);
+  }, [driverRoute, uiState]);
 
   return (
     <div>

@@ -16,7 +16,6 @@ function ConnectedRouteList({ driverRoute }) {
 
   return (
     <div>
-      <h4 className="section-header">Route List</h4>
       <div className="route">{router}</div>
     </div>
   );
