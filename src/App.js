@@ -1,17 +1,17 @@
 import "./App.scss";
 import { connect } from "react-redux";
-import MovementMapView from "./components/MovementMapView";
+import GoogleMovementMap from "./components/GoogleMovementMap";
 import Navbar from "./components/NavBar";
 import MovementList from "./components/MovementList";
 import EditMovementForm from "./components/EditMovementForm";
 import MovementForm from "./components/MovementForm";
 import RouteList from "./components/RouteList";
+import ReactMap from "./components/GoogleMovementMap";
 import RouteMapView from "./components/RouteMapView";
 import { ToastContainer, Slide } from "react-toastify";
 import { Tabs, Tab } from "react-bootstrap";
 import { changeMapView } from "./actions/";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -51,7 +51,8 @@ function ConnectedApp({ changeMapView }) {
         <div className="map__container col-lg-9">
           <Tabs defaultActiveKey="movement-map" onSelect={changeMapView}>
             <Tab eventKey="movement-map" title="Movements">
-              <MovementMapView />
+              <GoogleMovementMap />
+              {/* <MovementMapView /> */}
             </Tab>
             <Tab eventKey="route-map" title="Routes">
               <RouteMapView />
